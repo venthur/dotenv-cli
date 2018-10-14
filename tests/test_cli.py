@@ -41,7 +41,6 @@ def test_nonexisting_dotenv():
     assert b'FileNotFoundError' in proc.stderr
 
 
-
 def test_no_command():
     proc = run(['dotenv'])
     assert proc.returncode == 0
