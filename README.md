@@ -1,6 +1,6 @@
 # dotenv CLI
 
-Dotenv-CLI is a simple Package that provides the `dotenv` command. It
+Dotenv-CLI is a simple package that provides the `dotenv` command. It
 reads the `.env` file from the current directory puts the contents in
 the environment and executes the given command.
 
