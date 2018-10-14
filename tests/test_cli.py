@@ -32,3 +32,8 @@ def test_alternative_dotenv():
 
     proc = run(['dotenv', '--dotenv', f.name, 'env'], stdout=PIPE)
     assert b'foo=bar' in proc.stdout
+
+
+def test_no_command():
+    proc = run(['dotenv'])
+    assert proc.returncode == 0
