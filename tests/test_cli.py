@@ -34,6 +34,14 @@ def test_alternative_dotenv():
     assert b'foo=bar' in proc.stdout
 
 
+def test_nonexisting_dotenv():
+
+    proc = run(['dotenv', '-e', '/tmp/i.dont.exist', 'true'], stderr=PIPE)
+    assert proc.returncode != 0
+    assert b'FileNotFoundError' in proc.stderr
+
+
+
 def test_no_command():
     proc = run(['dotenv'])
     assert proc.returncode == 0
