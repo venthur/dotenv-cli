@@ -3,6 +3,7 @@ import logging
 import sys
 
 from dotenv_cli.core import run_dotenv
+from dotenv_cli import __VERSION__
 
 
 logger = logging.getLogger(__name__)
@@ -20,7 +21,11 @@ parser.add_argument(
     help='Shell command to execute',
     nargs=argparse.REMAINDER,
 )
-
+parser.add_argument(
+    '--version',
+    action='version',
+    version=__VERSION__,
+)
 
 def main():
     args = parser.parse_args()
