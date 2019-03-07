@@ -1,20 +1,40 @@
 from subprocess import run, PIPE
+from pathlib import Path
 import tempfile
 
+import pytest
 
-def test_stdout():
+DOTENV_FILE = """
+# comment=foo
+TEST=foo
+TWOLINES='foo\nbar'
+TEST_COMMENT=foo # bar
+LINE_WITH_EQUAL='foo=bar'
+"""
+
+
+@pytest.fixture
+def dotenvfile():
+    _file = Path.cwd() / '.env'
+    with _file.open('w') as fh:
+        fh.write(DOTENV_FILE)
+    yield _file
+    _file.unlink()
+
+
+def test_stdout(dotenvfile):
     proc = run(['dotenv', 'echo', 'test'], stdout=PIPE)
     assert b'test' in proc.stdout
 
 
-def test_stderr():
+def test_stderr(dotenvfile):
     proc = run(['dotenv',
                 'python', '-c', 'import os; os.write(2, b"test")'],
                stderr=PIPE)
     assert b'test' in proc.stderr
 
 
-def test_returncode():
+def test_returncode(dotenvfile):
     proc = run(['dotenv', 'false'])
     assert proc.returncode == 1
 
