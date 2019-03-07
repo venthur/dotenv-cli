@@ -1,9 +1,13 @@
 language: python
+
 python:
   - '3.5'
   - '3.6'
+  - '3.7'
   - 'nightly'
+
 install:
   - pip install -e .['dev']
+
 script:
   - make
