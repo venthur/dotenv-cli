@@ -1,0 +1,38 @@
+_dotenv()
+{
+    local cur prev words cword
+    _init_completion || return
+
+    # find completion(s) for command executed with dotenv
+    local i
+    for (( i=1; i <= COMP_CWORD; i++ )); do
+        if [[ ${COMP_WORDS[i]} != -* ]]; then
+            _command_offset $i
+            return
+        fi
+        # if current option requires a parameter, ignore the next one
+        case "${COMP_WORDS[i]}" in
+            -e|--dotenv)
+                ((i++))
+                ;;
+        esac
+    done
+
+    # completion for dotenv files
+    case "$prev" in
+        -e|--dotenv)
+            COMPREPLY=( $( compgen -f -- "$cur" ) )
+            return
+            ;;
+    esac
+
+    # check dotenv's options
+    if [[ $cur == -* ]]; then
+        COMPREPLY=( $( compgen -W '$( _parse_help "$1" )' -- "$cur" ) )
+        return
+    fi
+
+} &&
+complete -F _dotenv dotenv
+
+# vim: filetype=sh

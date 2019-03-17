@@ -2,6 +2,7 @@
 
 ## [unreleased] -
 
+* Added Bash completion
 * Fixed Travis-CI pipeline and added tests for py37
 
 
