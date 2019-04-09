@@ -18,6 +18,14 @@ $ dotenv some-command
 
 ## Install
 
+### Using PyPi
+
 ```bash
 $ pip install dotenv-cli
+```
+
+### On Debian and Ubuntu
+
+```bash
+# apt-get install python3-dotenv-cli
 ```
