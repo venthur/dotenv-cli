@@ -12,6 +12,7 @@ Testsuite: autopkgtest-pkg-python
 Package: python3-dotenv-cli
 Architecture: all
 Depends: ${python3:Depends}, ${misc:Depends}
+Conflicts: ruby-dotenv
 Description: CLI that loads .env configuration
  This package provides the dotenv command. It reads the .env file from the
  current directory puts the contents in the environment and executes the given
