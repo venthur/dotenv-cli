@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.1] - 2019-04-14
+## [1.0.2] - 2019-04-14
 
 * Debian package
 * Fixed Travis-CI pipeline and added tests for py37

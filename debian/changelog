@@ -1,4 +1,4 @@
-dotenv-cli (1.0.1-1) unstable; urgency=medium
+dotenv-cli (1.0.2-1) unstable; urgency=medium
 
   * Conflict with ruby-dotenv (Closes: #926916)
 
