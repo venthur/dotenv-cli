@@ -26,9 +26,6 @@ setup(
       ]
     },
     packages=['dotenv_cli'],
-    data_files=[
-        ('/usr/share/bash-completion/completions', ['completion/dotenv']),
-    ],
     entry_points={
         'console_scripts': [
             'dotenv = dotenv_cli.__main__:main'
