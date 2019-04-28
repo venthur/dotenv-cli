@@ -1,0 +1,22 @@
+Source: dotenv-cli
+Section: python
+Priority: optional
+Maintainer: Bastian Venthur <venthur@debian.org>
+Build-Depends: debhelper (>= 11), dh-python, python3-all, python3-setuptools
+Standards-Version: 4.3.0
+Homepage: https://github.com/venthur/dotenv-cli
+Vcs-Browser: https://github.com/venthur/dotenv-cli
+Vcs-Git: https://github.com/venthur/dotenv-cli.git
+Testsuite: autopkgtest-pkg-python
+
+Package: python3-dotenv-cli
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}
+Conflicts: ruby-dotenv
+Description: CLI that loads .env configuration
+ This package provides the dotenv command. It reads the .env file from the
+ current directory puts the contents in the environment and executes the given
+ command.
+ .
+ dotenv supports alternative .env files like .env.development via the -e or
+ --dotenv parameters.

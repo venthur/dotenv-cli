@@ -1,0 +1,11 @@
+dotenv-cli (1.0.2-1) unstable; urgency=medium
+
+  * Conflict with ruby-dotenv (Closes: #926916)
+
+ -- Bastian Venthur <venthur@debian.org>  Sun, 14 Apr 2019 17:42:29 +0200
+
+dotenv-cli (1.0.0-1) unstable; urgency=medium
+
+  * Initial release (Closes: #923856)
+
+ -- Bastian Venthur <venthur@debian.org>  Wed, 06 Mar 2019 09:55:47 +0100
