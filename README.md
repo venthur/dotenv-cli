@@ -7,6 +7,13 @@ executes the given command.
 `dotenv` supports alternative `.env` files like `.env.development` via the `-e`
 or `--dotenv` parametes.
 
+`dotenv` provides bash completion, so you can use `dotenv` like this:
+
+```bash
+$ dotenv make <TAB>
+all      clean    docs     lint     release  test
+```
+
 ## Usage
 
 Just prepend the command you want to run with the extra environment variables

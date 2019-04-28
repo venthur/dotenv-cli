@@ -1,8 +1,9 @@
 # Changelog
 
-## unreleased
+## [1.1.0] - 2019-04-28
 
-* Added Bash completion
+* Added Bash completion and provide it via sdist and Debian package
+
 
 ## [1.0.2] - 2019-04-14
 
