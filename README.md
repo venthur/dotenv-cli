@@ -27,11 +27,17 @@ $ dotenv some-command
 
 ### Using PyPi
 
+dotenv-cli is [available on PyPi](pypi), you can install it via:
+
+[pypi]: https://pypi.org/project/dotenv-cli/
+
 ```bash
 $ pip install dotenv-cli
 ```
 
 ### On Debian and Ubuntu
+
+Alternatively, you can install dotenv-cli on Debian based distributions via:
 
 ```bash
 # apt-get install python3-dotenv-cli
