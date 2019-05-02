@@ -14,6 +14,27 @@ $ dotenv make <TAB>
 all      clean    docs     lint     release  test
 ```
 
+## Install
+
+### Using PyPi
+
+dotenv-cli is [available on PyPi][pypi], you can install it via:
+
+[pypi]: https://pypi.org/project/dotenv-cli/
+
+```bash
+$ pip install dotenv-cli
+```
+
+### On Debian and Ubuntu
+
+Alternatively, you can install dotenv-cli on Debian based distributions via:
+
+```bash
+# apt-get install python3-dotenv-cli
+```
+
+
 ## Usage
 
 Create an `.env` file in the root of your project and populate it with some
@@ -49,25 +70,4 @@ SSH_PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----\n...\n-----END RSA PRIVATE KEY-
 ```sh
 # this is a comment
 FOO=bar"
-```
-
-
-## Install
-
-### Using PyPi
-
-dotenv-cli is [available on PyPi][pypi], you can install it via:
-
-[pypi]: https://pypi.org/project/dotenv-cli/
-
-```bash
-$ pip install dotenv-cli
-```
-
-### On Debian and Ubuntu
-
-Alternatively, you can install dotenv-cli on Debian based distributions via:
-
-```bash
-# apt-get install python3-dotenv-cli
 ```
