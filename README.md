@@ -57,7 +57,7 @@ and those variables will be available in your environment variables.
 
 ### Multi-Line Value
 
-For multi-line values, you can use double-quites and the `\n` character:
+For multi-line values, you can use quotes and the `\n` character:
 
 ```sh
 SSH_PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----\n...\n-----END RSA PRIVATE KEY-----"
