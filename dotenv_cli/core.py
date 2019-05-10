@@ -1,6 +1,5 @@
 import logging
 import os
-import codecs
 from subprocess import Popen  # , PIPE, STDOUT
 
 
@@ -50,7 +49,7 @@ def read_dotenv(filename):
         if value[0] == value[-1] in ['"', "'"]:
             value = value[1:-1]
             # escape escape characters
-            value = codecs.decode(value, 'unicode-escape')
+            value = bytes(value, 'utf-8').decode('unicode-escape')
         res[key] = value
     logger.debug(res)
     return res
