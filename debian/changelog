@@ -1,4 +1,4 @@
-dotenv-cli (1.2.0-1) UNRELEASED; urgency=medium
+dotenv-cli (1.2.0-1) unstable; urgency=medium
 
   * Fixed newlines
 
