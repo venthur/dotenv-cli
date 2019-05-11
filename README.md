@@ -55,6 +55,43 @@ $ dotenv some-command
 and those variables will be available in your environment variables.
 
 
+## Rules
+
+* Basic unquoted values: `BASIC=basic basic` becomes `BASIC=basic basic`
+* Lines starting with `export` are suported: `export EXPORT=foo` becomes
+  `EXPORT=foo`
+* Empty values become empty strings:
+
+Example `.env` file:
+
+```sh
+BASIC=basic basic
+export EXPORT=foo
+EMPTY=
+INNER_QUOTES=this 'is' a test
+INNER_QUOTES2=this "is" a test
+TRIM_WHITESPACE= foo
+KEEP_WHITESPACE="  foo  "
+MULTILINE="multi\nline"
+# some comment
+```
+
+becomes:
+
+```sh
+$ dotenv env
+
+BASIC=basic basic
+EXPORT=foo
+EMPTY=
+INNER_QUOTES=this 'is' a test
+INNER_QUOTES2=this "is" a test
+TRIM_WHITESPACE=foo
+KEEP_WHITESPACE=  foo
+MULTILINE=multi
+line
+```
+
 ### Multi-Line Value
 
 For multi-line values, you can use quotes and the `\n` character:
