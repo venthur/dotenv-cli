@@ -42,6 +42,10 @@ def read_dotenv(filename):
 
         key, value = line.split('=', 1)
 
+        # allow export
+        if key.startswith('export '):
+            key = key.split(' ', 1)[-1]
+
         key = key.strip()
         value = value.strip()
 
