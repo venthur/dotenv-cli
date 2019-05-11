@@ -57,10 +57,18 @@ and those variables will be available in your environment variables.
 
 ## Rules
 
-* Basic unquoted values: `BASIC=basic basic` becomes `BASIC=basic basic`
-* Lines starting with `export` are suported: `export EXPORT=foo` becomes
-  `EXPORT=foo`
-* Empty values become empty strings:
+The parser understands the following:
+
+* Basic unquoted values: `BASIC=basic basic`
+* Lines starting with `export` are supported: `export EXPORT=foo`, so you can
+  `source` the file in bash
+* Empty values become empty strings: `EMTPY=`
+* Inner quotes are maintained in basic values: `INNER_QUOTES=this 'is' a test`
+  or `INNER_QUOTES2=this "is" a test
+* Whitespaces are trimmed from unquoted values: `TRIM_WHITESPACE=  foo  ` and
+  maintained in quoted values:  `KEEP_WHITESPACE="  foo  "
+* Multiline (and other control characters) are supported in (single or double)
+  quoted values: `MULTILINE="multi\nline"
 
 Example `.env` file:
 
