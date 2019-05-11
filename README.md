@@ -55,19 +55,47 @@ $ dotenv some-command
 and those variables will be available in your environment variables.
 
 
-### Multi-Line Value
+## Rules
 
-For multi-line values, you can use quotes and the `\n` character:
+The parser understands the following:
+
+* Basic unquoted values (`BASIC=basic basic`)
+* Lines starting with `export` (`export EXPORT=foo`), so you can `source` the
+  file in bash
+* Lines starting with `#` are ignored (`# Comment`)
+* Empty values (`EMPTY=`) become empty strings
+* Inner quotes are maintained in basic values: `INNER_QUOTES=this 'is' a test`
+  or `INNER_QUOTES2=this "is" a test`
+* White spaces are trimmed from unquoted values: `TRIM_WHITESPACE=  foo  ` and
+  maintained in quoted values:  `KEEP_WHITESPACE="  foo  "`
+* Multi line (and other control characters) are supported in (single or double)
+  quoted values: `MULTILINE="multi\nline"`
+
+Example `.env` file:
 
 ```sh
-SSH_PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----\n...\n-----END RSA PRIVATE KEY-----"
+BASIC=basic basic
+export EXPORT=foo
+EMPTY=
+INNER_QUOTES=this 'is' a test
+INNER_QUOTES2=this "is" a test
+TRIM_WHITESPACE= foo
+KEEP_WHITESPACE="  foo  "
+MULTILINE="multi\nline"
+# some comment
 ```
 
-### Comments
-
-`dotenv` ignores lines starting with `#`:
+becomes:
 
 ```sh
-# this is a comment
-FOO=bar"
+$ dotenv env
+BASIC=basic basic
+EXPORT=foo
+EMPTY=
+INNER_QUOTES=this 'is' a test
+INNER_QUOTES2=this "is" a test
+TRIM_WHITESPACE=foo
+KEEP_WHITESPACE=  foo
+MULTILINE=multi
+line
 ```
