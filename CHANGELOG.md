@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.3.0] - 
+## [1.3.0] - 2019-05-11
 
 * Support for lines starting with `export`
 * Support for empty values
