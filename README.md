@@ -59,16 +59,16 @@ and those variables will be available in your environment variables.
 
 The parser understands the following:
 
-* Basic unquoted values: `BASIC=basic basic`
-* Lines starting with `export` are supported: `export EXPORT=foo`, so you can
-  `source` the file in bash
-* Lines starting with `#` are ignored: `# Comment`
-* Empty values become empty strings: `EMTPY=`
+* Basic unquoted values (`BASIC=basic basic`)
+* Lines starting with `export` (`export EXPORT=foo`), so you can `source` the
+  file in bash
+* Lines starting with `#` are ignored (`# Comment`)
+* Empty values (`EMPTY=`) become empty strings
 * Inner quotes are maintained in basic values: `INNER_QUOTES=this 'is' a test`
   or `INNER_QUOTES2=this "is" a test`
-* Whitespaces are trimmed from unquoted values: `TRIM_WHITESPACE=  foo  ` and
+* White spaces are trimmed from unquoted values: `TRIM_WHITESPACE=  foo  ` and
   maintained in quoted values:  `KEEP_WHITESPACE="  foo  "`
-* Multiline (and other control characters) are supported in (single or double)
+* Multi line (and other control characters) are supported in (single or double)
   quoted values: `MULTILINE="multi\nline"`
 
 Example `.env` file:
@@ -87,9 +87,8 @@ MULTILINE="multi\nline"
 
 becomes:
 
-```bash
+```sh
 $ dotenv env
-
 BASIC=basic basic
 EXPORT=foo
 EMPTY=
@@ -99,21 +98,4 @@ TRIM_WHITESPACE=foo
 KEEP_WHITESPACE=  foo
 MULTILINE=multi
 line
-```
-
-### Multi-Line Value
-
-For multi-line values, you can use quotes and the `\n` character:
-
-```sh
-SSH_PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----\n...\n-----END RSA PRIVATE KEY-----"
-```
-
-### Comments
-
-`dotenv` ignores lines starting with `#`:
-
-```sh
-# this is a comment
-FOO=bar"
 ```
