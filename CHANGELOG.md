@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.0] - 
+
+* Support for lines starting with `export`
+* Support for empty values
+
 ## [1.2.0] - 2019-05-10
 
 * Fixed newlines
