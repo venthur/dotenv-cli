@@ -68,8 +68,8 @@ The parser understands the following:
   or `INNER_QUOTES2=this "is" a test`
 * White spaces are trimmed from unquoted values: `TRIM_WHITESPACE=  foo  ` and
   maintained in quoted values:  `KEEP_WHITESPACE="  foo  "`
-* Multi line (and other control characters) are supported in (single or double)
-  quoted values: `MULTILINE="multi\nline"`
+* Interpret escapes (e.g. `\n`) in double quoted values, keep them as-is in
+  single quoted values.
 
 Example `.env` file:
 
@@ -81,7 +81,10 @@ INNER_QUOTES=this 'is' a test
 INNER_QUOTES2=this "is" a test
 TRIM_WHITESPACE= foo
 KEEP_WHITESPACE="  foo  "
-MULTILINE="multi\nline"
+MULTILINE_DQ="multi\nline"
+MULTILINE_SQ='multi\nline'
+MULTILINE_NQ=multi\nline
+#
 # some comment
 ```
 
@@ -96,6 +99,8 @@ INNER_QUOTES=this 'is' a test
 INNER_QUOTES2=this "is" a test
 TRIM_WHITESPACE=foo
 KEEP_WHITESPACE=  foo
-MULTILINE=multi
+MULTILINE_DQ=multi
 line
+MULTILINE_SQ=multi\nline
+MULTILINE_NQ=multi\nline
 ```

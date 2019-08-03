@@ -15,7 +15,9 @@ INNER_QUOTES=this 'is' a test
 INNER_QUOTES2=this "is" a test
 TRIM_WHITESPACE= foo
 KEEP_WHITESPACE="  foo  "
-MULTILINE="multi\nline"
+MULTILINE_DQ="multi\nline"
+MULTILINE_SQ='multi\nline'
+MULTILINE_NQ=multi\nline
 # some comment
 should be ignored
 """
@@ -31,9 +33,11 @@ should be ignored
     assert env['INNER_QUOTES2'] == 'this "is" a test'
     assert env['TRIM_WHITESPACE'] == "foo"
     assert env['KEEP_WHITESPACE'] == "  foo  "
-    assert env['MULTILINE'] == "multi\nline"
+    assert env['MULTILINE_DQ'] == "multi\nline"
+    assert env['MULTILINE_SQ'] == "multi\\nline"
+    assert env['MULTILINE_NQ'] == "multi\\nline"
 
-    assert len(env) == 8
+    assert len(env) == 10
 
 
 def test_basic():
@@ -107,7 +111,7 @@ def test_keep_whitespaces():
 def test_multiline():
     """Quoted values can contain newlines."""
     f = tempfile.NamedTemporaryFile('w')
-    TEST = r"FOO='This is\nbar'"
+    TEST = r'FOO="This is\nbar"'
 
     with open(f.name, 'w') as fh:
         fh.write(TEST)

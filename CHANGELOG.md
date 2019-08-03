@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.0.0] - 2019-08-03
+
+* Differentiate single vs double quotes
+
 ## [1.3.0] - 2019-05-11
 
 * Support for lines starting with `export`

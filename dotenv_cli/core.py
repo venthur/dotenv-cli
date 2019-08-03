@@ -50,11 +50,14 @@ def read_dotenv(filename):
         value = value.strip()
 
         # remove quotes (not sure if this is standard behaviour)
-        if (len(value) >= 2
-                and value[0] == value[-1] in ['"', "'"]):
+        if len(value) >= 2 and value[0] == value[-1] == '"':
             value = value[1:-1]
             # escape escape characters
             value = bytes(value, 'utf-8').decode('unicode-escape')
+
+        elif len(value) >= 2 and value[0] == value[-1] == "'":
+            value = value[1:-1]
+
         res[key] = value
     logger.debug(res)
     return res
