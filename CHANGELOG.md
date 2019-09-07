@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.0.1] - 2019-09-07
+
+* Version bump for Debian source-only upload
+
 ## [2.0.0] - 2019-08-03
 
 * Differentiate single vs double quotes
