@@ -1,5 +1,11 @@
 # Changelog
 
+## [unreleased]
+
+* measure coverage for tests as well
+* skip coverage report for files w/ complete coverage
+* use twine for uploading to pypi
+
 ## [2.0.1] - 2019-09-07
 
 * Version bump for Debian source-only upload

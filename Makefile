@@ -17,7 +17,8 @@ docs:
 	$(MAKE) -C docs html
 
 release:
-	python3 setup.py sdist bdist_wheel upload
+	python3 setup.py sdist bdist_wheel
+	twine upload dist/*
 
 clean:
 	find . -type f -name *.pyc -delete
