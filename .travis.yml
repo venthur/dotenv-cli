@@ -2,9 +2,11 @@ language: python
 
 # workaround to make travis work with python3.7
 # https://github.com/travis-ci/travis-ci/issues/9069#issuecomment-425720905
+arch:
+  - amd64
+  - ppc64le
 sudo: required
 dist: xenial
-
 python:
   - '3.5'
   - '3.6'
@@ -12,6 +14,7 @@ python:
   - 'nightly'
 
 install:
+  - pip install --upgrade pytest
   - pip install -e .['dev']
 
 script:
