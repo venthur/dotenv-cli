@@ -1,3 +1,12 @@
+dotenv-cli (2.1.0-1) unstable; urgency=medium
+
+  * make sure child process terminates when dotenv terminates
+  * measure coverage for tests as well
+  * skip coverage report for files w/ complete coverage
+  * use twine for uploading to pypi
+
+ -- Bastian Venthur <venthur@debian.org>  Tue, 27 Oct 2020 22:21:31 +0100
+
 dotenv-cli (2.0.1-1) unstable; urgency=medium
 
   * Source only upload

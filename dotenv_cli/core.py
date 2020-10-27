@@ -1,3 +1,4 @@
+import atexit
 import logging
 import os
 from subprocess import Popen  # , PIPE, STDOUT
@@ -83,5 +84,24 @@ def run_dotenv(filename, command):
         shell=False,
         env=env,
     )
+
+    def terminate_proc():
+        """Kill child process.
+
+        All signals should be forwarded to the child processes
+        automatically, however child processes are also free to ignore
+        some of them. With this we make sure the child processes get
+        killed once dotenv exits.
+
+        """
+        proc.kill()
+
+    # register
+    atexit.register(terminate_proc)
+
     _, _ = proc.communicate()
+
+    # unregister
+    atexit.unregister(terminate_proc)
+
     return proc.returncode

@@ -1,7 +1,8 @@
 # Changelog
 
-## [unreleased]
+## [2.1.0] - 2020-10-27
 
+* make sure child process terminates when dotenv terminates
 * measure coverage for tests as well
 * skip coverage report for files w/ complete coverage
 * use twine for uploading to pypi
