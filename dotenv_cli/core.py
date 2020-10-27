@@ -1,7 +1,8 @@
+import atexit
 import logging
 import os
 from subprocess import Popen  # , PIPE, STDOUT
-
+from time import sleep
 
 logger = logging.getLogger(__name__)
 
@@ -84,4 +85,13 @@ def run_dotenv(filename, command):
         env=env,
     )
     _, _ = proc.communicate()
+
+    def terminate_child(target=proc):
+        target.terminate()
+        sleep(3)
+        if target.poll() is not None:
+            logger.warning('Process survived the SIGTERM, killing it!')
+            target.kill()
+        atexit.register(terminate_child)
+
     return proc.returncode
