@@ -1,5 +1,10 @@
 # Changelog
 
+## [unreleased]
+
+* bumped minimal Python version to 3.6
+* Added 3.8, 3.9 to travis tests
+
 ## [2.1.0] - 2020-10-27
 
 * make sure child process terminates when dotenv terminates
