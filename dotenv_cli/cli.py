@@ -46,6 +46,16 @@ def parse_args(args=None):
 
 
 def main():
+    """Run dotenv.
+
+    This function parses sys.argv and runs dotenv.
+
+    Returns
+    -------
+    int
+        the return value
+
+    """
     args = parse_args()
     if not args.command:
         return
