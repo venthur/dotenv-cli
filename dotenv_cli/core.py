@@ -65,7 +65,24 @@ def read_dotenv(filename):
 
 
 def run_dotenv(filename, command):
+    """Run dotenv.
 
+    This function executes the commands with the environment variables
+    parsed from filename.
+
+    Parameters
+    ----------
+    filename : str
+        path to the .env file
+    command : list[str]
+        command to execute
+
+    Returns
+    -------
+    int
+        the return value
+
+    """
     # read dotenv
     dotenv = read_dotenv(filename)
 
