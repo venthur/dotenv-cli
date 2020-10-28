@@ -55,10 +55,9 @@ def test_alternative_dotenv():
 
 
 def test_nonexisting_dotenv():
-
     proc = run(['dotenv', '-e', '/tmp/i.dont.exist', 'true'], stderr=PIPE)
-    assert proc.returncode != 0
-    assert b'FileNotFoundError' in proc.stderr
+    assert proc.returncode == 0
+    assert b'does not exist' in proc.stderr
 
 
 def test_no_command():
