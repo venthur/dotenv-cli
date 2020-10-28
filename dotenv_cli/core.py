@@ -24,8 +24,13 @@ def read_dotenv(filename):
     FileNotFoundError
 
     """
-    with open(filename, 'r') as fh:
-        data = fh.read()
+    try:
+        with open(filename, 'r') as fh:
+            data = fh.read()
+    except FileNotFoundError:
+        logger.warning(f"{filename} does not exist, continuing without "
+                       "setting environment variables.")
+        data = ""
 
     res = {}
     for line in data.splitlines():
