@@ -2,6 +2,8 @@
 
 ## [unreleased]
 
+* refactored __main__.py into cli.py and wrapped argparsing into dedicated
+  function
 * bumped minimal Python version to 3.6
 * Added 3.8, 3.9 to travis tests
 

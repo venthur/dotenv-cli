@@ -28,7 +28,7 @@ setup(
     packages=['dotenv_cli'],
     entry_points={
         'console_scripts': [
-            'dotenv = dotenv_cli.__main__:main'
+            'dotenv = dotenv_cli.cli:main'
         ]
     },
     license='MIT',
