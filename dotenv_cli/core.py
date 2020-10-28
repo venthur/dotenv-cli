@@ -19,10 +19,6 @@ def read_dotenv(filename):
     -------
     dict
 
-    Raises
-    ------
-    FileNotFoundError
-
     """
     try:
         with open(filename, 'r') as fh:
