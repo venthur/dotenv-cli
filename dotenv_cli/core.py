@@ -24,8 +24,13 @@ def read_dotenv(filename):
     FileNotFoundError
 
     """
-    with open(filename, 'r') as fh:
-        data = fh.read()
+    try:
+        with open(filename, 'r') as fh:
+            data = fh.read()
+    except FileNotFoundError:
+        logger.warning(f"{filename} does not exist, continuing without "
+                       "setting environment variables.")
+        data = ""
 
     res = {}
     for line in data.splitlines():
@@ -65,7 +70,24 @@ def read_dotenv(filename):
 
 
 def run_dotenv(filename, command):
+    """Run dotenv.
 
+    This function executes the commands with the environment variables
+    parsed from filename.
+
+    Parameters
+    ----------
+    filename : str
+        path to the .env file
+    command : list[str]
+        command to execute
+
+    Returns
+    -------
+    int
+        the return value
+
+    """
     # read dotenv
     dotenv = read_dotenv(filename)
 
