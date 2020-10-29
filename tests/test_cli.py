@@ -4,6 +4,7 @@ import tempfile
 
 import pytest
 
+
 DOTENV_FILE = """
 # comment=foo
 TEST=foo
