@@ -1,5 +1,7 @@
 extend-diff-ignore = "^[^/]*[.]egg-info/"
+# below are my exceptions, probably best to try to mirror the .gitignore
+extend-diff-ignore = "^build/"
 extend-diff-ignore = "^dist/"
-extend-diff-ignore = "^venv/"
 extend-diff-ignore = "^.pytest_cache/"
 extend-diff-ignore = "^.coverage"
+extend-diff-ignore = "^venv/"
