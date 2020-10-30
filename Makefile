@@ -1,3 +1,5 @@
+VERSION = $(shell python3 setup.py --version)
+
 all: lint test
 
 test:
@@ -16,6 +18,9 @@ release:
 	python3 setup.py sdist bdist_wheel
 	twine upload dist/*
 .PHONY: release
+
+tarball:
+	git archive --output=../dotenv-cli_$(VERSION).orig.tar.gz HEAD
 
 clean:
 	find . -type f -name *.pyc -delete
