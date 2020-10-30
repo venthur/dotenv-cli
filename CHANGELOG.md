@@ -12,6 +12,7 @@
   function
 * bumped minimal Python version to 3.6
 * Added 3.8, 3.9 to travis tests
+* Cleaned up Makefile
 
 ## [2.1.0] - 2020-10-27
 
