@@ -2,6 +2,8 @@
 
 ## [unreleased]
 
+* Migrated from TravisCI to github actions. We test now on Linux, Mac and
+  Windows x all supported Python versions!
 * Fixed tests under windows, where NamedTemporaryFile cannot be opened twice.
 * Allow for missing .env file -- in this case the command will be executed
   without setting any environment variables. The previous behaviour was to
