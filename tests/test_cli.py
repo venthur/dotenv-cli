@@ -44,9 +44,8 @@ def test_returncode(dotenvfile):
 
 
 def test_alternative_dotenv():
-    f = tempfile.NamedTemporaryFile('w')
-    with open(f.name, 'w') as fh:
-        fh.write('foo=bar')
+    with tempfile.NamedTemporaryFile('w', delete=False) as f:
+        f.write('foo=bar')
 
     proc = run(['dotenv', '-e', f.name, 'env'], stdout=PIPE)
     assert b'foo=bar' in proc.stdout

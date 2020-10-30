@@ -2,6 +2,9 @@
 
 ## [unreleased]
 
+* Migrated from TravisCI to github actions. We test now on Linux, Mac and
+  Windows x all supported Python versions!
+* Fixed tests under windows, where NamedTemporaryFile cannot be opened twice.
 * Allow for missing .env file -- in this case the command will be executed
   without setting any environment variables. The previous behaviour was to
   fail with a FileNotFoundError
@@ -9,6 +12,8 @@
   function
 * bumped minimal Python version to 3.6
 * Added 3.8, 3.9 to travis tests
+* Cleaned up Makefile
+* Added twine to dev-dependencies
 
 ## [2.1.0] - 2020-10-27
 
