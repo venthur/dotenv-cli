@@ -2,6 +2,7 @@
 
 ## [unreleased]
 
+* Fixed tests under windows, where NamedTemporaryFile cannot be opened twice.
 * Allow for missing .env file -- in this case the command will be executed
   without setting any environment variables. The previous behaviour was to
   fail with a FileNotFoundError
