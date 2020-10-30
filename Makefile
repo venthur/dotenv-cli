@@ -16,7 +16,7 @@ docs:
 
 release:
 	python3 setup.py sdist bdist_wheel
-	twine upload dist/*
+	twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
 .PHONY: release
 
 tarball:

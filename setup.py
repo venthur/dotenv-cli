@@ -23,6 +23,7 @@ setup(
           'pytest',
           'pytest-cov',
           'flake8',
+          'wheel',
           'twine',
       ]
     },
