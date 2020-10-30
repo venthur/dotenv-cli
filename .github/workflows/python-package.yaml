@@ -11,6 +11,7 @@ jobs:
 
     strategy:
       matrix:
+        fail-fast: false
         os:
           - ubuntu-latest
           - macos-latest
