@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    name: Test Python ${{ matrix.python }} on ${{ matrix.os }}
+    name: Test Python ${{ matrix.python-version }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -15,7 +15,7 @@ jobs:
           - ubuntu-latest
           - macos-latest
           - windows-latest
-        python:
+        python-version:
           - 3.6
           - 3.7
           - 3.8
