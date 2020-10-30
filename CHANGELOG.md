@@ -13,6 +13,7 @@
 * bumped minimal Python version to 3.6
 * Added 3.8, 3.9 to travis tests
 * Cleaned up Makefile
+* Added twine to dev-dependencies
 
 ## [2.1.0] - 2020-10-27
 
