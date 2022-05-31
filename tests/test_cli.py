@@ -30,7 +30,7 @@ def test_stdout(dotenvfile):
 
 def test_stderr(dotenvfile):
     proc = run(['dotenv',
-                'python', '-c', 'import os; os.write(2, b"test")'],
+                'python3', '-c', 'import os; os.write(2, b"test")'],
                stderr=PIPE)
     assert b'test' in proc.stderr
 
