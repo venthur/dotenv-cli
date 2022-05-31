@@ -32,6 +32,10 @@ release: $(VENV)
 	$(BIN)/python setup.py sdist bdist_wheel
 	$(BIN)/twine upload dist/*
 
+VERSION = $(shell python3 setup.py --version)
+tarball:
+	git archive --output=../dotenv-cli_$(VERSION).orig.tar.gz HEAD
+
 .PHONY: clean
 clean:
 	rm -rf build dist *.egg-info
