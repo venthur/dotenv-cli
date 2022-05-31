@@ -1,3 +1,11 @@
+dotenv-cli (3.0.0-1) unstable; urgency=medium
+
+  * removed python 3.6 support
+  * added dependabot
+  * updated makefile
+
+ -- Bastian Venthur <venthur@debian.org>  Tue, 31 May 2022 19:58:13 +0200
+
 dotenv-cli (2.2.0-1) unstable; urgency=medium
 
   * Allow for missing .env file -- in this case the command will be executed
