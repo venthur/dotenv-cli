@@ -2,6 +2,7 @@
 
 ## [unreleased]
 
+* removed python 3.6 support
 * updated makefile
 
 ## [2.2.0] - 2020-10-30
