@@ -1,6 +1,6 @@
 # Changelog
 
-## [unreleased]
+## [3.0.0] - 2022-05-31
 
 * removed python 3.6 support
 * added dependabot
