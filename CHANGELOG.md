@@ -1,5 +1,9 @@
 # Changelog
 
+## [unreleased]
+
+* updated makefile
+
 ## [2.2.0] - 2020-10-30
 
 * Allow for missing .env file -- in this case the command will be executed
