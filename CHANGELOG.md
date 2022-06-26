@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.0.1] - 2022-06-26
+
+* bumped version (no changes)
+
 ## [3.0.0] - 2022-05-31
 
 * removed python 3.6 support
