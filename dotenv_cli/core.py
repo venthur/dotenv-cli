@@ -7,12 +7,12 @@ from subprocess import Popen  # , PIPE, STDOUT
 logger = logging.getLogger(__name__)
 
 
-def read_dotenv(filename):
+def read_dotenv(filename: str) -> dict[str, str]:
     """Read dotenv file.
 
     Parameters
     ----------
-    filename : str
+    filename
         path to the filename
 
     Returns
@@ -65,7 +65,7 @@ def read_dotenv(filename):
     return res
 
 
-def run_dotenv(filename, command):
+def run_dotenv(filename: str, command: list[str]) -> int:
     """Run dotenv.
 
     This function executes the commands with the environment variables
@@ -73,9 +73,9 @@ def run_dotenv(filename, command):
 
     Parameters
     ----------
-    filename : str
+    filename
         path to the .env file
-    command : list[str]
+    command
         command to execute
 
     Returns
@@ -103,7 +103,7 @@ def run_dotenv(filename, command):
         env=env,
     )
 
-    def terminate_proc():
+    def terminate_proc() -> None:
         """Kill child process.
 
         All signals should be forwarded to the child processes

@@ -5,7 +5,7 @@ import pytest
 from dotenv_cli import core
 
 
-def test_full():
+def test_full() -> None:
     TEST = r"""
 BASIC=basic basic
 export EXPORT=foo
@@ -39,7 +39,7 @@ should be ignored
     assert len(env) == 10
 
 
-def test_basic():
+def test_basic() -> None:
     """Basic unquoted strings"""
     TEST = "FOO=BAR"
 
@@ -50,7 +50,7 @@ def test_basic():
     assert env['FOO'] == 'BAR'
 
 
-def test_empty():
+def test_empty() -> None:
     """Empty values become empty strings."""
     TEST = "FOO="
 
@@ -61,7 +61,7 @@ def test_empty():
     assert env['FOO'] == ''
 
 
-def test_inner_quotes():
+def test_inner_quotes() -> None:
     """Inner quotes are mainained."""
     TEST = "\n".join(["FOO1=this 'is' a test",
                       'FOO2=this "is" a test'])
@@ -74,7 +74,7 @@ def test_inner_quotes():
     assert env['FOO2'] == 'this "is" a test'
 
 
-def test_trim_whitespaces():
+def test_trim_whitespaces() -> None:
     """Whitespaces are stripped from unquoted values."""
     TEST = "FOO=  test  "
 
@@ -85,7 +85,7 @@ def test_trim_whitespaces():
     assert env['FOO'] == "test"
 
 
-def test_keep_whitespaces():
+def test_keep_whitespaces() -> None:
     """Whitespaces are mainteined from quoted values."""
     TEST = "FOO='  test  '"
 
@@ -96,7 +96,7 @@ def test_keep_whitespaces():
     assert env['FOO'] == "  test  "
 
 
-def test_multiline():
+def test_multiline() -> None:
     """Quoted values can contain newlines."""
     TEST = r'FOO="This is\nbar"'
 
@@ -113,7 +113,7 @@ def test_multiline():
     ("FOO='\"Test\"'", '"Test"'),
     ('FOO="\'Test\'"', "'Test'"),
 ])
-def test_quotes(input_, expected):
+def test_quotes(input_: str, expected: str) -> None:
     with tempfile.NamedTemporaryFile('w', delete=False) as f:
         f.write(input_)
 
@@ -121,7 +121,7 @@ def test_quotes(input_, expected):
     assert env['FOO'] == expected
 
 
-def test_comments():
+def test_comments() -> None:
     """Lines starting with # are ignored."""
     TEST = """
     FOO=BAR
@@ -138,7 +138,7 @@ def test_comments():
     assert env['BAR'] == 'BAZ'
 
 
-def test_emtpy_lines():
+def test_emtpy_lines() -> None:
     """Empty lines are skipped."""
     TEST = """
     FOO=BAR
@@ -155,7 +155,7 @@ def test_emtpy_lines():
     assert env['BAR'] == 'BAZ'
 
 
-def test_export():
+def test_export() -> None:
     """Exports are allowed."""
     TEST = "export FOO=BAR"
 

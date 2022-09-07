@@ -8,7 +8,7 @@ from dotenv_cli import __VERSION__
 logger = logging.getLogger(__name__)
 
 
-def parse_args(args=None):
+def parse_args(args: list[str] | None = None) -> argparse.Namespace:
     """Parse arguments.
 
     Paramters
@@ -45,7 +45,7 @@ def parse_args(args=None):
     return parser.parse_args(args)
 
 
-def main():
+def main() -> int:
     """Run dotenv.
 
     This function parses sys.argv and runs dotenv.
@@ -58,6 +58,6 @@ def main():
     """
     args = parse_args()
     if not args.command:
-        return
+        return 0
 
     return run_dotenv(args.dotenv, args.command)

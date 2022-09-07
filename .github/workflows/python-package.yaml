@@ -43,3 +43,7 @@ jobs:
     - name: Run tests
       run: |
         make test
+
+    - name: Run mypy
+      run: |
+        make mypy

@@ -1,6 +1,7 @@
 from subprocess import run, PIPE
 from pathlib import Path
 import tempfile
+from typing import Iterator
 
 import pytest
 
@@ -15,7 +16,7 @@ LINE_WITH_EQUAL='foo=bar'
 
 
 @pytest.fixture
-def dotenvfile():
+def dotenvfile() -> Iterator[Path]:
     _file = Path.cwd() / '.env'
     with _file.open('w') as fh:
         fh.write(DOTENV_FILE)
@@ -23,19 +24,19 @@ def dotenvfile():
     _file.unlink()
 
 
-def test_stdout(dotenvfile):
+def test_stdout(dotenvfile: Path) -> None:
     proc = run(['dotenv', 'echo', 'test'], stdout=PIPE)
     assert b'test' in proc.stdout
 
 
-def test_stderr(dotenvfile):
+def test_stderr(dotenvfile: Path) -> None:
     proc = run(['dotenv',
                 'python3', '-c', 'import os; os.write(2, b"test")'],
                stderr=PIPE)
     assert b'test' in proc.stderr
 
 
-def test_returncode(dotenvfile):
+def test_returncode(dotenvfile: Path) -> None:
     proc = run(['dotenv', 'false'])
     assert proc.returncode == 1
 
@@ -43,7 +44,7 @@ def test_returncode(dotenvfile):
     assert proc.returncode == 0
 
 
-def test_alternative_dotenv():
+def test_alternative_dotenv() -> None:
     with tempfile.NamedTemporaryFile('w', delete=False) as f:
         f.write('foo=bar')
 
@@ -54,12 +55,12 @@ def test_alternative_dotenv():
     assert b'foo=bar' in proc.stdout
 
 
-def test_nonexisting_dotenv():
+def test_nonexisting_dotenv() -> None:
     proc = run(['dotenv', '-e', '/tmp/i.dont.exist', 'true'], stderr=PIPE)
     assert proc.returncode == 0
     assert b'does not exist' in proc.stderr
 
 
-def test_no_command():
+def test_no_command() -> None:
     proc = run(['dotenv'])
     assert proc.returncode == 0
