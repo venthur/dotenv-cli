@@ -5,6 +5,7 @@
 * updated dependencies:
   * flake8
   * pytest
+  * twine
 
 ## [3.0.1] - 2022-06-26
 
