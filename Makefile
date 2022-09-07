@@ -48,3 +48,4 @@ clean:
 	find . -type d -name __pycache__ -delete
 	# coverage
 	rm -rf htmlcov .coverage
+	rm -rf .mypy_cache
