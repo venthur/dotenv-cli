@@ -2,6 +2,7 @@
 
 ## [unreleased]
 
+* added type hints and mypy --strict to test suite
 * updated dependencies:
   * flake8
   * pytest
