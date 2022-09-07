@@ -10,7 +10,7 @@ endif
 
 
 .PHONY: all
-all: lint test
+all: test lint mypy
 
 $(VENV): requirements-dev.txt setup.py
 	$(PY) -m venv $(VENV)

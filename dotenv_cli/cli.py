@@ -1,3 +1,5 @@
+# remove when we don't support py38 anymore
+from __future__ import annotations
 import argparse
 import logging
 
@@ -13,7 +15,7 @@ def parse_args(args: list[str] | None = None) -> argparse.Namespace:
 
     Paramters
     ---------
-    args : list[str]
+    args
         This if for debugging only.
 
     Returns
