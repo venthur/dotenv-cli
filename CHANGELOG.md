@@ -1,6 +1,6 @@
 # Changelog
 
-## [unreleased]
+## [3.1.0] -- 2022-09-07
 
 * added type hints and mypy --strict to test suite
 * updated dependencies:
