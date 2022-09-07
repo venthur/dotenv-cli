@@ -4,6 +4,7 @@
 
 * updated dependencies:
   * flake8
+  * pytest
 
 ## [3.0.1] - 2022-06-26
 
