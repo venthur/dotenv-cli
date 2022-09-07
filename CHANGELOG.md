@@ -1,5 +1,10 @@
 # Changelog
 
+## [unreleased]
+
+* updated dependencies:
+  * flake8
+
 ## [3.0.1] - 2022-06-26
 
 * bumped version (no changes)
