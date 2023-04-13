@@ -49,3 +49,4 @@ clean:
 	# coverage
 	rm -rf htmlcov .coverage
 	rm -rf .mypy_cache
+	rm -rf .pytest_cache

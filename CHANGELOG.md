@@ -7,6 +7,8 @@
   * pytest
   * pytest-cov
   * wheel
+* Debian:
+  * added htmlcov and .mypy_cache to extended-diff-ignore
 
 ## [3.1.0] -- 2022-09-07
 
