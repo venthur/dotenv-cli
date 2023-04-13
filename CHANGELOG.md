@@ -9,6 +9,9 @@
   * wheel
 * Debian:
   * added htmlcov and .mypy_cache to extended-diff-ignore
+  * bump debhelper from 11 -> 13
+  * use debhelper-compat
+  * use standards-version 4.6.2
 
 ## [3.1.0] -- 2022-09-07
 
