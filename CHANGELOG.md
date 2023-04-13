@@ -6,6 +6,7 @@
   * mypy
   * pytest
   * pytest-cov
+  * wheel
 
 ## [3.1.0] -- 2022-09-07
 
