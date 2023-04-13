@@ -1,6 +1,6 @@
 # Changelog
 
-## [unreleased] -- 2023-XX-XX
+## [3.1.1] -- 2023-04-13
 
 * updated dependencies:
   * mypy
