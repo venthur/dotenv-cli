@@ -5,6 +5,7 @@
 * updated dependencies:
   * mypy
   * pytest
+  * pytest-cov
 
 ## [3.1.0] -- 2022-09-07
 
