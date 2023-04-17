@@ -1,6 +1,6 @@
 twine==4.0.1
 wheel==0.40.0
-pytest==7.3.0
+pytest==7.3.1
 pytest-cov==4.0.0
 flake8==5.0.4
 mypy==1.2.0
