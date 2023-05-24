@@ -12,7 +12,7 @@ endif
 .PHONY: all
 all: test lint mypy
 
-$(VENV): requirements-dev.txt setup.py
+$(VENV): requirements-dev.txt pyproject.toml
 	$(PY) -m venv $(VENV)
 	$(BIN)/pip install --upgrade -r requirements-dev.txt
 	$(BIN)/pip install -e .
@@ -28,15 +28,15 @@ mypy: $(VENV)
 
 .PHONY: lint
 lint: $(VENV)
-	$(BIN)/flake8
+	$(BIN)/flakeheaven lint
 
 .PHONY: release
 release: $(VENV)
 	rm -rf dist
-	$(BIN)/python setup.py sdist bdist_wheel
+	$(BIN)/python -m build
 	$(BIN)/twine upload dist/*
 
-VERSION = $(shell python3 setup.py --version)
+VERSION = $(shell python3 -c 'from dotenv_cli import __VERSION__; print(__VERSION__)')
 tarball:
 	git archive --output=../dotenv-cli_$(VERSION).orig.tar.gz HEAD
 
@@ -50,3 +50,4 @@ clean:
 	rm -rf htmlcov .coverage
 	rm -rf .mypy_cache
 	rm -rf .pytest_cache
+	rm -rf .flakeheaven_cache
