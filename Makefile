@@ -22,8 +22,7 @@ $(VENV): requirements-dev.txt pyproject.toml
 test: $(VENV)
 	# ensure we're using *our* dotenv during testing and not some other one
 	# installed on the system
-	export PATH=$(abspath $(BIN)):$(PATH)
-	$(BIN)/pytest
+	PATH=$(BIN):$(PATH) $(BIN)/pytest
 
 .PHONY: mypy
 mypy: $(VENV)
