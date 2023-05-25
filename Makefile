@@ -29,7 +29,7 @@ mypy: $(VENV)
 
 .PHONY: lint
 lint: $(VENV)
-	$(BIN)/flakeheaven lint
+	$(BIN)/flake8
 
 .PHONY: release
 release: $(VENV)
@@ -51,4 +51,3 @@ clean:
 	rm -rf htmlcov .coverage
 	rm -rf .mypy_cache
 	rm -rf .pytest_cache
-	rm -rf .flakeheaven_cache

@@ -25,7 +25,7 @@ dynamic = ["version"]
 dev = [
     "pytest",
     "pytest-cov",
-    "flakeheaven",
+    "flake8",
     "build",
     "twine",
     "mypy"
@@ -38,7 +38,7 @@ dotenv = "dotenv_cli.cli:main"
 packages = ["dotenv_cli"]
 
 [tool.setuptools.dynamic]
-version = {attr = "dotenv_cli.__VERSION__"}
+version = { attr = "dotenv_cli.__VERSION__" }
 
 [tool.pytest.ini_options]
 addopts = [
@@ -47,9 +47,6 @@ addopts = [
     "--cov-report=html",
     "--cov-report=term-missing:skip-covered"
 ]
-
-[tool.flakeheaven]
-exclude = ["venv", "build"]
 
 [tool.mypy]
 files = ["dotenv_cli", "tests"]
