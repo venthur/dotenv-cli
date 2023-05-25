@@ -25,9 +25,9 @@ jobs:
         exclude:
           # 3.7 and 3.8 on windows fails due to some pip issue
           - os: windows-latest
-            python-version:
-              - "3.7"
-              - "3.8"
+            python-version: "3.7"
+          - os: windows-latest
+            python-version: "3.8"
 
     steps:
     - uses: actions/checkout@v3
