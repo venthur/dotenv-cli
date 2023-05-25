@@ -10,7 +10,7 @@ endif
 
 
 .PHONY: all
-all: test lint mypy
+all: lint mypy test test-release
 
 $(VENV): requirements-dev.txt pyproject.toml
 	$(PY) -m venv $(VENV)
@@ -31,10 +31,17 @@ mypy: $(VENV)
 lint: $(VENV)
 	$(BIN)/flake8
 
-.PHONY: release
-release: $(VENV)
+.PHONY: build
+build: $(VENV)
 	rm -rf dist
-	$(BIN)/python -m build
+	$(BIN)/python3 -m build
+
+.PHONY: test-release
+test-release: $(VENV) build
+	$(BIN)/twine check dist/*
+
+.PHONY: release
+release: $(VENV) build
 	$(BIN)/twine upload dist/*
 
 VERSION = $(shell python3 -c 'from dotenv_cli import __VERSION__; print(__VERSION__)')
