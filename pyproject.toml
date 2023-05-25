@@ -4,22 +4,28 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dotenv-cli"
-description = "Simple dotenv CLI."
 authors = [
     { name="Bastian Venthur", email="mail@venthur.de" }
 ]
-license = { file = "LICENSE" }
-readme = "README.md"
-requires-python = ">=3.7"
+description = "Simple dotenv CLI."
 keywords = ["dotenv", "cli", ".env"]
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.7"
+dynamic = ["version"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
 ]
-urls = { Homepage = "https://github.com/venthur/dotenv-cli" }
-dynamic = ["version"]
+
+[project.scripts]
+dotenv = "dotenv_cli.cli:main"
+
+[project.urls]
+'Source' = 'https://github.com/venthur/dotenv-cli'
+'Changelog' = 'https://github.com/venthur/dotenv-cli/blob/master/CHANGELOG.md'
 
 [project.optional-dependencies]
 dev = [
@@ -31,14 +37,11 @@ dev = [
     "mypy"
 ]
 
-[project.scripts]
-dotenv = "dotenv_cli.cli:main"
+[tool.setuptools.dynamic]
+version = { attr = "dotenv_cli.__VERSION__" }
 
 [tool.setuptools]
 packages = ["dotenv_cli"]
-
-[tool.setuptools.dynamic]
-version = { attr = "dotenv_cli.__VERSION__" }
 
 [tool.pytest.ini_options]
 addopts = [
