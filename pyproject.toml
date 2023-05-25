@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=64.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dotenv-cli"
+authors = [
+    { name="Bastian Venthur", email="mail@venthur.de" }
+]
+description = "Simple dotenv CLI."
+keywords = ["dotenv", "cli", ".env"]
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.7"
+dynamic = ["version"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+
+[project.scripts]
+dotenv = "dotenv_cli.cli:main"
+
+[project.urls]
+'Source' = 'https://github.com/venthur/dotenv-cli'
+'Changelog' = 'https://github.com/venthur/dotenv-cli/blob/master/CHANGELOG.md'
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "flake8",
+    "build",
+    "twine",
+    "mypy"
+]
+
+[tool.setuptools.dynamic]
+version = { attr = "dotenv_cli.__VERSION__" }
+
+[tool.setuptools]
+packages = ["dotenv_cli"]
+
+[tool.pytest.ini_options]
+addopts = [
+    "--cov=dotenv_cli",
+    "--cov=tests",
+    "--cov-report=html",
+    "--cov-report=term-missing:skip-covered"
+]
+
+[tool.mypy]
+files = ["dotenv_cli", "tests"]
+strict = true

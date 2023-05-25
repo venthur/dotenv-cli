@@ -10,3 +10,5 @@ htmlcov/
 .pytest_cache/
 
 venv/
+
+.idea/
