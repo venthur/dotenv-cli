@@ -83,7 +83,8 @@ def run_dotenv(filename: str, command: list[str]) -> int:
     Returns
     -------
     int
-        the return value
+        The exit status code in Windows. In POSIX-compatible systems, the
+        function does not return normally.
 
     """
     # read dotenv
@@ -92,6 +93,10 @@ def run_dotenv(filename: str, command: list[str]) -> int:
     # update env
     env = os.environ.copy()
     env.update(dotenv)
+
+    # in POSIX, we replace the current process and all is done
+    if os.name == 'posix':
+        os.execvpe(command[0], command, env)
 
     # execute
     proc = Popen(
