@@ -1,9 +1,8 @@
 # remove when we don't support py38 anymore
 from __future__ import annotations
-import atexit
 import logging
 import os
-from subprocess import Popen  # , PIPE, STDOUT
+from typing import NoReturn
 
 
 logger = logging.getLogger(__name__)
@@ -67,7 +66,7 @@ def read_dotenv(filename: str) -> dict[str, str]:
     return res
 
 
-def run_dotenv(filename: str, command: list[str]) -> int:
+def run_dotenv(filename: str, command: list[str]) -> NoReturn:
     """Run dotenv.
 
     This function executes the commands with the environment variables
@@ -80,11 +79,6 @@ def run_dotenv(filename: str, command: list[str]) -> int:
     command
         command to execute
 
-    Returns
-    -------
-    int
-        the return value
-
     """
     # read dotenv
     dotenv = read_dotenv(filename)
@@ -94,34 +88,5 @@ def run_dotenv(filename: str, command: list[str]) -> int:
     env.update(dotenv)
 
     # execute
-    proc = Popen(
-        command,
-        # stdin=PIPE,
-        # stdout=PIPE,
-        # stderr=STDOUT,
-        universal_newlines=True,
-        bufsize=0,
-        shell=False,
-        env=env,
-    )
-
-    def terminate_proc() -> None:
-        """Kill child process.
-
-        All signals should be forwarded to the child processes
-        automatically, however child processes are also free to ignore
-        some of them. With this we make sure the child processes get
-        killed once dotenv exits.
-
-        """
-        proc.kill()
-
-    # register
-    atexit.register(terminate_proc)
-
-    _, _ = proc.communicate()
-
-    # unregister
-    atexit.unregister(terminate_proc)
-
-    return proc.returncode
+    # this function replaces this process with the command and does not return
+    os.execvpe(command[0], command, env)

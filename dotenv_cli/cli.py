@@ -62,4 +62,4 @@ def main() -> int:
     if not args.command:
         return 0
 
-    return run_dotenv(args.dotenv, args.command)
+    run_dotenv(args.dotenv, args.command)
