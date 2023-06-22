@@ -8,6 +8,7 @@
   * modernized github actions:
     * don't run linter and mypy on all platforms, only one
     * run test-release
+  * updated dependencies
 
 ## [3.1.1] -- 2023-04-13
 
