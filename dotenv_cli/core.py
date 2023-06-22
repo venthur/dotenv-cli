@@ -1,11 +1,11 @@
 # remove when we don't support py38 anymore
 from __future__ import annotations
+
 import atexit
 import logging
 import os
 from subprocess import Popen
 from typing import NoReturn
-
 
 logger = logging.getLogger(__name__)
 
@@ -24,11 +24,13 @@ def read_dotenv(filename: str) -> dict[str, str]:
 
     """
     try:
-        with open(filename, 'r') as fh:
+        with open(filename, "r") as fh:
             data = fh.read()
     except FileNotFoundError:
-        logger.warning(f"{filename} does not exist, continuing without "
-                       "setting environment variables.")
+        logger.warning(
+            f"{filename} does not exist, continuing without "
+            "setting environment variables."
+        )
         data = ""
 
     res = {}
@@ -38,18 +40,18 @@ def read_dotenv(filename: str) -> dict[str, str]:
         line = line.strip()
 
         # ignore comments
-        if line.startswith('#'):
+        if line.startswith("#"):
             continue
 
         # ignore empty lines or lines w/o '='
-        if '=' not in line:
+        if "=" not in line:
             continue
 
-        key, value = line.split('=', 1)
+        key, value = line.split("=", 1)
 
         # allow export
-        if key.startswith('export '):
-            key = key.split(' ', 1)[-1]
+        if key.startswith("export "):
+            key = key.split(" ", 1)[-1]
 
         key = key.strip()
         value = value.strip()
@@ -58,7 +60,7 @@ def read_dotenv(filename: str) -> dict[str, str]:
         if len(value) >= 2 and value[0] == value[-1] == '"':
             value = value[1:-1]
             # escape escape characters
-            value = bytes(value, 'utf-8').decode('unicode-escape')
+            value = bytes(value, "utf-8").decode("unicode-escape")
 
         elif len(value) >= 2 and value[0] == value[-1] == "'":
             value = value[1:-1]
@@ -97,7 +99,7 @@ def run_dotenv(filename: str, command: list[str]) -> NoReturn | int:
 
     # in POSIX, we replace the current process with the command, execvpe does
     # not return
-    if os.name == 'posix':
+    if os.name == "posix":
         os.execvpe(command[0], command, env)
 
     # in Windows, we spawn a new process

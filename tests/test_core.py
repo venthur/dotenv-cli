@@ -21,20 +21,20 @@ MULTILINE_NQ=multi\nline
 should be ignored
 """
 
-    with tempfile.NamedTemporaryFile('w', delete=False) as f:
+    with tempfile.NamedTemporaryFile("w", delete=False) as f:
         f.write(TEST)
 
     env = core.read_dotenv(f.name)
-    assert env['BASIC'] == 'basic basic'
-    assert env['EXPORT'] == 'foo'
-    assert env['EMPTY'] == ''
-    assert env['INNER_QUOTES'] == "this 'is' a test"
-    assert env['INNER_QUOTES2'] == 'this "is" a test'
-    assert env['TRIM_WHITESPACE'] == "foo"
-    assert env['KEEP_WHITESPACE'] == "  foo  "
-    assert env['MULTILINE_DQ'] == "multi\nline"
-    assert env['MULTILINE_SQ'] == "multi\\nline"
-    assert env['MULTILINE_NQ'] == "multi\\nline"
+    assert env["BASIC"] == "basic basic"
+    assert env["EXPORT"] == "foo"
+    assert env["EMPTY"] == ""
+    assert env["INNER_QUOTES"] == "this 'is' a test"
+    assert env["INNER_QUOTES2"] == 'this "is" a test'
+    assert env["TRIM_WHITESPACE"] == "foo"
+    assert env["KEEP_WHITESPACE"] == "  foo  "
+    assert env["MULTILINE_DQ"] == "multi\nline"
+    assert env["MULTILINE_SQ"] == "multi\\nline"
+    assert env["MULTILINE_NQ"] == "multi\\nline"
 
     assert len(env) == 10
 
@@ -43,82 +43,84 @@ def test_basic() -> None:
     """Basic unquoted strings"""
     TEST = "FOO=BAR"
 
-    with tempfile.NamedTemporaryFile('w', delete=False) as f:
+    with tempfile.NamedTemporaryFile("w", delete=False) as f:
         f.write(TEST)
 
     env = core.read_dotenv(f.name)
-    assert env['FOO'] == 'BAR'
+    assert env["FOO"] == "BAR"
 
 
 def test_empty() -> None:
     """Empty values become empty strings."""
     TEST = "FOO="
 
-    with tempfile.NamedTemporaryFile('w', delete=False) as f:
+    with tempfile.NamedTemporaryFile("w", delete=False) as f:
         f.write(TEST)
 
     env = core.read_dotenv(f.name)
-    assert env['FOO'] == ''
+    assert env["FOO"] == ""
 
 
 def test_inner_quotes() -> None:
     """Inner quotes are mainained."""
-    TEST = "\n".join(["FOO1=this 'is' a test",
-                      'FOO2=this "is" a test'])
+    TEST = "\n".join(["FOO1=this 'is' a test", 'FOO2=this "is" a test'])
 
-    with tempfile.NamedTemporaryFile('w', delete=False) as f:
+    with tempfile.NamedTemporaryFile("w", delete=False) as f:
         f.write(TEST)
 
     env = core.read_dotenv(f.name)
-    assert env['FOO1'] == "this 'is' a test"
-    assert env['FOO2'] == 'this "is" a test'
+    assert env["FOO1"] == "this 'is' a test"
+    assert env["FOO2"] == 'this "is" a test'
 
 
 def test_trim_whitespaces() -> None:
     """Whitespaces are stripped from unquoted values."""
     TEST = "FOO=  test  "
 
-    with tempfile.NamedTemporaryFile('w', delete=False) as f:
+    with tempfile.NamedTemporaryFile("w", delete=False) as f:
         f.write(TEST)
 
     env = core.read_dotenv(f.name)
-    assert env['FOO'] == "test"
+    assert env["FOO"] == "test"
 
 
 def test_keep_whitespaces() -> None:
     """Whitespaces are mainteined from quoted values."""
     TEST = "FOO='  test  '"
 
-    with tempfile.NamedTemporaryFile('w', delete=False) as f:
+    with tempfile.NamedTemporaryFile("w", delete=False) as f:
         f.write(TEST)
 
     env = core.read_dotenv(f.name)
-    assert env['FOO'] == "  test  "
+    assert env["FOO"] == "  test  "
 
 
 def test_multiline() -> None:
     """Quoted values can contain newlines."""
     TEST = r'FOO="This is\nbar"'
 
-    with tempfile.NamedTemporaryFile('w', delete=False) as f:
+    with tempfile.NamedTemporaryFile("w", delete=False) as f:
         f.write(TEST)
 
     env = core.read_dotenv(f.name)
-    assert env['FOO'] == 'This is\nbar'
+    assert env["FOO"] == "This is\nbar"
 
 
-@pytest.mark.parametrize('input_, expected', [
-    ('FOO="Test"', 'Test'),
-    ("FOO='Test'", 'Test'),
-    ("FOO='\"Test\"'", '"Test"'),
-    ('FOO="\'Test\'"', "'Test'"),
-])
+@pytest.mark.parametrize(
+    "input_, expected",
+    [
+        ('FOO="Test"', "Test"),
+        ("FOO='Test'", "Test"),
+        ("FOO='\"Test\"'", '"Test"'),
+        ("FOO=\"'Test'\"", "'Test'"),
+    ],
+)
 def test_quotes(input_: str, expected: str) -> None:
-    with tempfile.NamedTemporaryFile('w', delete=False) as f:
+    with tempfile.NamedTemporaryFile("w", delete=False) as f:
         f.write(input_)
 
     env = core.read_dotenv(f.name)
-    assert env['FOO'] == expected
+    assert env["FOO"] == expected
 
 
 def test_comments() -> None:
@@ -129,13 +131,13 @@ def test_comments() -> None:
     BAR=BAZ
     """
 
-    with tempfile.NamedTemporaryFile('w', delete=False) as f:
+    with tempfile.NamedTemporaryFile("w", delete=False) as f:
         f.write(TEST)
 
     env = core.read_dotenv(f.name)
     assert len(env) == 2
-    assert env['FOO'] == 'BAR'
-    assert env['BAR'] == 'BAZ'
+    assert env["FOO"] == "BAR"
+    assert env["BAR"] == "BAZ"
 
 
 def test_emtpy_lines() -> None:
@@ -146,21 +148,21 @@ def test_emtpy_lines() -> None:
     BAR=BAZ
     """
 
-    with tempfile.NamedTemporaryFile('w', delete=False) as f:
+    with tempfile.NamedTemporaryFile("w", delete=False) as f:
         f.write(TEST)
 
     env = core.read_dotenv(f.name)
     assert len(env) == 2
-    assert env['FOO'] == 'BAR'
-    assert env['BAR'] == 'BAZ'
+    assert env["FOO"] == "BAR"
+    assert env["BAR"] == "BAZ"
 
 
 def test_export() -> None:
     """Exports are allowed."""
     TEST = "export FOO=BAR"
 
-    with tempfile.NamedTemporaryFile('w', delete=False) as f:
+    with tempfile.NamedTemporaryFile("w", delete=False) as f:
         f.write(TEST)
 
     env = core.read_dotenv(f.name)
-    assert env['FOO'] == 'BAR'
+    assert env["FOO"] == "BAR"

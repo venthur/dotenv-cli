@@ -3,6 +3,7 @@
 ## [unreleased]
   * on POSIX systems we don't fork a new child process anymore but use `exec*`
     to replace the `dotenv` process
+  * Dropped Python 3.7 support
   * replaced setup.py/.cfg with pyproject.toml
   * modernized github actions:
     * don't run linter and mypy on all platforms, only one
