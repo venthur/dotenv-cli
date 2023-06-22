@@ -3,7 +3,8 @@ from __future__ import annotations
 import atexit
 import logging
 import os
-from subprocess import Popen  # , PIPE, STDOUT
+from subprocess import Popen
+from typing import NoReturn
 
 
 logger = logging.getLogger(__name__)
@@ -67,7 +68,7 @@ def read_dotenv(filename: str) -> dict[str, str]:
     return res
 
 
-def run_dotenv(filename: str, command: list[str]) -> int:
+def run_dotenv(filename: str, command: list[str]) -> NoReturn | int:
     """Run dotenv.
 
     This function executes the commands with the environment variables
@@ -82,7 +83,7 @@ def run_dotenv(filename: str, command: list[str]) -> int:
 
     Returns
     -------
-    int
+    NoReturn | int
         The exit status code in Windows. In POSIX-compatible systems, the
         function does not return normally.
 
@@ -94,10 +95,12 @@ def run_dotenv(filename: str, command: list[str]) -> int:
     env = os.environ.copy()
     env.update(dotenv)
 
-    # in POSIX, we replace the current process and all is done
+    # in POSIX, we replace the current process with the command, execvpe does
+    # not return
     if os.name == 'posix':
         os.execvpe(command[0], command, env)
 
+    # in Windows, we spawn a new process
     # execute
     proc = Popen(
         command,
