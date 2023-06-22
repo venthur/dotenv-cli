@@ -2,6 +2,7 @@
 from __future__ import annotations
 import argparse
 import logging
+from typing import NoReturn
 
 from dotenv_cli.core import run_dotenv
 from dotenv_cli import __VERSION__
@@ -47,7 +48,7 @@ def parse_args(args: list[str] | None = None) -> argparse.Namespace:
     return parser.parse_args(args)
 
 
-def main() -> int:
+def main() -> NoReturn | int:
     """Run dotenv.
 
     This function parses sys.argv and runs dotenv.
