@@ -1,3 +1,16 @@
+dotenv-cli (3.2.0-0) UNRELEASED; urgency=medium
+
+  * on POSIX systems we don't fork a new child process anymore but use `exec*`
+    to replace the `dotenv` process
+  * Dropped Python 3.7 support
+  * replaced setup.py/.cfg with pyproject.toml
+  * modernized github actions:
+    * don't run linter and mypy on all platforms, only one
+    * run test-release
+  * updated dev-dependencies
+
+ -- Bastian Venthur <venthur@debian.org>  Sat, 01 Jul 2023 13:24:59 +0200
+
 dotenv-cli (3.1.1-1) unstable; urgency=medium
 
   * new upstream version
