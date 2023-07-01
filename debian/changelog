@@ -8,6 +8,7 @@ dotenv-cli (3.2.0-1) unstable; urgency=medium
     * don't run linter and mypy on all platforms, only one
     * run test-release
   * updated dev-dependencies
+  * re-enabled tests on building debian package
 
  -- Bastian Venthur <venthur@debian.org>  Sat, 01 Jul 2023 13:24:59 +0200
 

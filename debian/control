@@ -4,9 +4,12 @@ Priority: optional
 Maintainer: Bastian Venthur <venthur@debian.org>
 Build-Depends:
  debhelper-compat (= 13),
- dh-sequence-python3,
- dh-python, python3-all,
+ pybuild-plugin-pyproject,
+ dh-python,
+ python3-all,
  python3-setuptools,
+ python3-pytest,
+ python3-pytest-cov,
  bash-completion
 Standards-Version: 4.6.2
 Homepage: https://github.com/venthur/dotenv-cli
