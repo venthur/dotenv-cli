@@ -1,4 +1,4 @@
-dotenv-cli (3.2.0-0) UNRELEASED; urgency=medium
+dotenv-cli (3.2.0-1) unstable; urgency=medium
 
   * on POSIX systems we don't fork a new child process anymore but use `exec*`
     to replace the `dotenv` process
