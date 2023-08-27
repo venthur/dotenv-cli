@@ -1,6 +1,11 @@
 # Changelog
 
-## [3.2.0] - 2023-07-01
+## [3.2.1] -- 2023-08-27
+
+* updated debian/watch
+* updated dev-dependencies
+
+## [3.2.0] -- 2023-07-01
 
   * on POSIX systems we don't fork a new child process anymore but use `exec*`
     to replace the `dotenv` process
