@@ -5,5 +5,5 @@
 version=4
 
 # Direct Git
-# opts="mode=git" https://github.com/venthur/dotenv-cli.git \
-#   refs/tags/v([\d\.]+) debian uupdate
+opts="mode=git" https://github.com/venthur/dotenv-cli.git \
+  refs/tags/v([\d\.]+) debian uupdate
