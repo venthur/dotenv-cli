@@ -1,3 +1,6 @@
+"""Test core module."""
+
+
 import tempfile
 
 import pytest
@@ -6,6 +9,7 @@ from dotenv_cli import core
 
 
 def test_full() -> None:
+    """Test full dotenv file."""
     TEST = r"""
 BASIC=basic basic
 export EXPORT=foo
@@ -40,7 +44,7 @@ should be ignored
 
 
 def test_basic() -> None:
-    """Basic unquoted strings"""
+    """Basic unquoted strings."""
     TEST = "FOO=BAR"
 
     with tempfile.NamedTemporaryFile("w", delete=False) as f:
@@ -116,6 +120,7 @@ def test_multiline() -> None:
     ],
 )
 def test_quotes(input_: str, expected: str) -> None:
+    """Test different quotes."""
     with tempfile.NamedTemporaryFile("w", delete=False) as f:
         f.write(input_)
 
@@ -124,6 +129,7 @@ def test_quotes(input_: str, expected: str) -> None:
 
 
 def test_comments() -> None:
+    """Test comments."""
     """Lines starting with # are ignored."""
     TEST = """
     FOO=BAR

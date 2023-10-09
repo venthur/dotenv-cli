@@ -31,7 +31,7 @@ dotenv = "dotenv_cli.cli:main"
 dev = [
     "pytest",
     "pytest-cov",
-    "flake8",
+    "ruff",
     "build",
     "twine",
     "mypy"
@@ -51,6 +51,20 @@ addopts = [
     "--cov-report=term-missing:skip-covered"
 ]
 
+[tool.ruff]
+select = [
+    "F",        # pyflakes
+    "E", "W",   # pycodestyle
+    "C90",      # mccabe
+    "I",        # isort
+    "D",        # pydocstyle
+    "UP"        # pyupgrade
+]
+line-length = 79
+target-version = "py38"
+
+[tool.ruff.pydocstyle]
+convention = "numpy"
 [tool.mypy]
 files = ["dotenv_cli", "tests"]
 strict = true

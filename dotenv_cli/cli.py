@@ -1,3 +1,6 @@
+"""Command line interface for dotenv-cli."""
+
+
 # remove when we don't support py38 anymore
 from __future__ import annotations
 
