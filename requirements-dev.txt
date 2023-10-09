@@ -2,5 +2,5 @@ twine==4.0.2
 build==1.0.3
 pytest==7.4.2
 pytest-cov==4.1.0
-flake8==6.1.0
+ruff==0.0.291
 mypy==1.5.1

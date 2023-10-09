@@ -1,3 +1,5 @@
+"""Test the CLI interface."""
+
 import tempfile
 from pathlib import Path
 from subprocess import PIPE, run
@@ -16,6 +18,7 @@ LINE_WITH_EQUAL='foo=bar'
 
 @pytest.fixture
 def dotenvfile() -> Iterator[Path]:
+    """Provide temporary dotenv file."""
     _file = Path.cwd() / ".env"
     with _file.open("w") as fh:
         fh.write(DOTENV_FILE)
@@ -24,16 +27,19 @@ def dotenvfile() -> Iterator[Path]:
 
 
 def test_stdout(dotenvfile: Path) -> None:
+    """Test stdout."""
     proc = run(["dotenv", "echo", "test"], stdout=PIPE)
     assert b"test" in proc.stdout
 
 
 def test_stderr(dotenvfile: Path) -> None:
+    """Test stderr."""
     proc = run(["dotenv echo test 1>&2"], stderr=PIPE, shell=True)
     assert b"test" in proc.stderr
 
 
 def test_returncode(dotenvfile: Path) -> None:
+    """Test returncode."""
     proc = run(["dotenv", "false"])
     assert proc.returncode == 1
 
@@ -42,6 +48,7 @@ def test_returncode(dotenvfile: Path) -> None:
 
 
 def test_alternative_dotenv() -> None:
+    """Test alternative dotenv file."""
     with tempfile.NamedTemporaryFile("w", delete=False) as f:
         f.write("foo=bar")
 
@@ -53,11 +60,13 @@ def test_alternative_dotenv() -> None:
 
 
 def test_nonexisting_dotenv() -> None:
+    """Test non-existing dotenv file."""
     proc = run(["dotenv", "-e", "/tmp/i.dont.exist", "true"], stderr=PIPE)
     assert proc.returncode == 0
     assert b"does not exist" in proc.stderr
 
 
 def test_no_command() -> None:
+    """Test no command."""
     proc = run(["dotenv"])
     assert proc.returncode == 0

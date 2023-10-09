@@ -1,3 +1,6 @@
+"""Core functions."""
+
+
 # remove when we don't support py38 anymore
 from __future__ import annotations
 
@@ -24,7 +27,7 @@ def read_dotenv(filename: str) -> dict[str, str]:
 
     """
     try:
-        with open(filename, "r") as fh:
+        with open(filename) as fh:
             data = fh.read()
     except FileNotFoundError:
         logger.warning(

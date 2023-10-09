@@ -1,5 +1,9 @@
 # Changelog
 
+## [unreleased]
+
+* replaced flake8 with ruff
+
 ## [3.2.1] -- 2023-08-27
 
 * updated debian/watch
