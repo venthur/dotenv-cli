@@ -5,6 +5,7 @@
 
 export PYBUILD_NAME=dotenv-cli
 export PYBUILD_SYSTEM=pyproject
+export PYBUILD_TEST_ARGS=--no-cov
 
 %:
 	dh $@ --with python3,bash-completion --buildsystem=pybuild

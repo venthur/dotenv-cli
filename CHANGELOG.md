@@ -3,6 +3,7 @@
 ## [3.2.2] -- 2023-11-10
 
 * replaced flake8 with ruff
+* when building the debian package, don't run coverage when running tests
 
 ## [3.2.1] -- 2023-08-27
 

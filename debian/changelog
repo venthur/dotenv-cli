@@ -1,6 +1,8 @@
 dotenv-cli (3.2.2-1) unstable; urgency=medium
 
   * replaced flake8 with ruff
+  * when building the debian package, don't run coverage when executing the
+    tests (Closes: #1040232)
 
  -- Bastian Venthur <venthur@debian.org>  Fri, 10 Nov 2023 21:16:08 +0100
 
