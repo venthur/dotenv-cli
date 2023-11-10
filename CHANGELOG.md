@@ -1,6 +1,6 @@
 # Changelog
 
-## [unreleased]
+## [3.2.2] -- 2023-11-10
 
 * replaced flake8 with ruff
 
