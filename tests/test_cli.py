@@ -26,6 +26,12 @@ def dotenvfile() -> Iterator[Path]:
     _file.unlink()
 
 
+def test_this_dotenv() -> None:
+    """Simple test for CI to assert we're running *our* dotenv."""
+    proc = run(["dotenv", "--help"], stdout=PIPE)
+    assert b'Replace existing environment variables' in proc.stdout
+
+
 def test_stdout(dotenvfile: Path) -> None:
     """Test stdout."""
     proc = run(["dotenv", "echo", "test"], stdout=PIPE)

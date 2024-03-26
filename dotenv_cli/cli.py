@@ -27,7 +27,12 @@ def parse_args(args: list[str] | None = None) -> argparse.Namespace:
     argparse.Namespace
 
     """
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description=(
+            "dotenv reads the `.env` file from the current directory, puts "
+            "the contents in the environment, and executes the given command."
+        ),
+    )
 
     parser.add_argument(
         "-e",
