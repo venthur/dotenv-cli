@@ -80,6 +80,9 @@ def test_no_command() -> None:
 
 def test_replace_environment(dotenvfile: Path) -> None:
     """Test replace environment."""
+    import os
+
+    print(os.environ)
     proc = run(["dotenv", "-r", "env"], stdout=PIPE)
     # the above .env file has exactly 4 lines
     assert len(proc.stdout.splitlines()) == 4
