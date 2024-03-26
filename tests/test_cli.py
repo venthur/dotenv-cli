@@ -70,3 +70,14 @@ def test_no_command() -> None:
     """Test no command."""
     proc = run(["dotenv"])
     assert proc.returncode == 0
+
+
+def test_replace_environment(dotenvfile: Path) -> None:
+    """Test replace environment."""
+    proc = run(["dotenv", "-r", "env"], stdout=PIPE)
+    # the above .env file has exactly 4 lines
+    assert len(proc.stdout.splitlines()) == 4
+
+    proc = run(["dotenv", "--replace", "env"], stdout=PIPE)
+    # the above .env file has exactly 4 lines
+    assert len(proc.stdout.splitlines()) == 4

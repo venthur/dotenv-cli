@@ -48,6 +48,15 @@ def parse_args(args: list[str] | None = None) -> argparse.Namespace:
         version=__VERSION__,
     )
 
+    parser.add_argument(
+        "-r", "--replace",
+        action="store_true",
+        help=(
+            "Replace existing environment variables. "
+            "The default behavious is to add new- or update existing ones."
+        ),
+    )
+
     return parser.parse_args(args)
 
 
@@ -66,4 +75,4 @@ def main() -> NoReturn | int:
     if not args.command:
         return 0
 
-    return run_dotenv(args.dotenv, args.command)
+    return run_dotenv(args.dotenv, args.command, args.replace)

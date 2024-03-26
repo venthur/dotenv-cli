@@ -73,7 +73,11 @@ def read_dotenv(filename: str) -> dict[str, str]:
     return res
 
 
-def run_dotenv(filename: str, command: list[str]) -> NoReturn | int:
+def run_dotenv(
+    filename: str,
+    command: list[str],
+    replace: bool = False
+) -> NoReturn | int:
     """Run dotenv.
 
     This function executes the commands with the environment variables
@@ -85,6 +89,8 @@ def run_dotenv(filename: str, command: list[str]) -> NoReturn | int:
         path to the .env file
     command
         command to execute
+    replace_env
+        Replace the current environment instead of updating it.
 
     Returns
     -------
@@ -96,9 +102,13 @@ def run_dotenv(filename: str, command: list[str]) -> NoReturn | int:
     # read dotenv
     dotenv = read_dotenv(filename)
 
-    # update env
-    env = os.environ.copy()
-    env.update(dotenv)
+    if replace:
+        # replace env
+        env = dotenv
+    else:
+        # update env
+        env = os.environ.copy()
+        env.update(dotenv)
 
     # in POSIX, we replace the current process with the command, execvpe does
     # not return

@@ -1,5 +1,10 @@
 # Changelog
 
+## [unreleased]
+
+* added option to completely replace environment with contents of the dotenv
+  file
+
 ## [3.2.2] -- 2023-11-10
 
 * replaced flake8 with ruff
