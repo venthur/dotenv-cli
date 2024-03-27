@@ -1,5 +1,6 @@
 """Test the CLI interface."""
 
+import os
 import tempfile
 from pathlib import Path
 from subprocess import PIPE, run
@@ -82,17 +83,16 @@ def test_no_command() -> None:
 
 def test_replace_environment(dotenvfile: Path) -> None:
     """Test replace environment."""
-    # we're putting the venv/bin explicitly in the command as dotenv -r removes
-    # all environment variables, including the PATH
-    proc = run(
-        ["dotenv", "-r", "venv/bin/python", "-m", "tests.env"], stdout=PIPE
-    )
-    # the above .env file has exactly 4 lines
-    assert len(proc.stdout.splitlines()) == 4
+    # we're putting the path to python explicitly in the command as dotenv -r
+    # removes all environment variables, including the PATH
+    if os.name == "nt":
+        PYTHON = "venv/Scripts/python"
+    else:
+        PYTHON = "venv/bin/python"
+    proc = run(["dotenv", "-r", PYTHON, "-m", "tests.env"], stdout=PIPE)
+    # the above .env file has exactly 4 lines, on some platforms, python itself
+    # adds a few more environment variables
+    assert len(proc.stdout.splitlines()) < 10
 
-    proc = run(
-        ["dotenv", "--replace", "venv/bin/python", "-m", "tests.env"],
-        stdout=PIPE,
-    )
-    # the above .env file has exactly 4 lines
-    assert len(proc.stdout.splitlines()) == 4
+    proc = run(["dotenv", "--replace", PYTHON, "-m", "tests.env"], stdout=PIPE)
+    assert len(proc.stdout.splitlines()) < 10
