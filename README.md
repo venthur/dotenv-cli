@@ -8,9 +8,9 @@ given command.
 `dotenv` supports alternative `.env` files like `.env.development` via the `-e`
 or `--dotenv` parameters.
 
-`dotenv` also provides an option to completely replace the environment
-variables with the ones from the `.env` file, allowing you to control exactly
-which environment variables are set.
+With the `--replace` flag, `dotenv` also provides an option to completely
+replace the environment variables with the ones from the `.env` file, allowing
+you to control exactly which environment variables are set.
 
 `dotenv` provides bash completion, so you can use `dotenv` like this:
 
