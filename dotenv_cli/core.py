@@ -74,9 +74,7 @@ def read_dotenv(filename: str) -> dict[str, str]:
 
 
 def run_dotenv(
-    filename: str,
-    command: list[str],
-    replace: bool = False
+    filename: str, command: list[str], replace: bool = False
 ) -> NoReturn | int:
     """Run dotenv.
 

@@ -18,7 +18,10 @@ $(VENV): requirements-dev.txt pyproject.toml
 	$(BIN)/pip install -e .['dev']
 	touch $(VENV)
 
+# in this target, our tests are using Popen etc to run other scrips. Therefore
+# we must set the PATH to include the virtual environment's bin directory
 .PHONY: test
+test: PATH := $(BIN):$(PATH)
 test: $(VENV)
 	$(BIN)/pytest
 

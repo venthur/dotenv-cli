@@ -7,6 +7,8 @@ from typing import Iterator
 
 import pytest
 
+from dotenv_cli import __VERSION__
+
 DOTENV_FILE = """
 # comment=foo
 TEST=foo
@@ -28,8 +30,8 @@ def dotenvfile() -> Iterator[Path]:
 
 def test_this_dotenv() -> None:
     """Simple test for CI to assert we're running *our* dotenv."""
-    proc = run(["dotenv", "--help"], stdout=PIPE)
-    assert b'Replace existing environment variables' in proc.stdout
+    proc = run(["dotenv", "--version"], stdout=PIPE)
+    assert __VERSION__.encode() in proc.stdout
 
 
 def test_stdout(dotenvfile: Path) -> None:
@@ -80,13 +82,17 @@ def test_no_command() -> None:
 
 def test_replace_environment(dotenvfile: Path) -> None:
     """Test replace environment."""
-    import os
-
-    print(os.environ)
-    proc = run(["dotenv", "-r", "env"], stdout=PIPE)
+    # we're putting the venv/bin explicitly in the command as dotenv -r removes
+    # all environment variables, including the PATH
+    proc = run(
+        ["dotenv", "-r", "venv/bin/python", "-m", "tests.env"], stdout=PIPE
+    )
     # the above .env file has exactly 4 lines
     assert len(proc.stdout.splitlines()) == 4
 
-    proc = run(["dotenv", "--replace", "env"], stdout=PIPE)
+    proc = run(
+        ["dotenv", "--replace", "venv/bin/python", "-m", "tests.env"],
+        stdout=PIPE,
+    )
     # the above .env file has exactly 4 lines
     assert len(proc.stdout.splitlines()) == 4

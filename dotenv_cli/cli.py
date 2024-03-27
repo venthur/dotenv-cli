@@ -54,11 +54,12 @@ def parse_args(args: list[str] | None = None) -> argparse.Namespace:
     )
 
     parser.add_argument(
-        "-r", "--replace",
+        "-r",
+        "--replace",
         action="store_true",
         help=(
             "Replace existing environment variables. "
-            "The default behavious is to add new- or update existing ones."
+            "The default behaviour is to add new- or update existing ones."
         ),
     )
 
