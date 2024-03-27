@@ -1,6 +1,5 @@
 """Test the CLI interface."""
 
-import os
 import tempfile
 from pathlib import Path
 from subprocess import PIPE, run
@@ -83,16 +82,12 @@ def test_no_command() -> None:
 
 def test_replace_environment(dotenvfile: Path) -> None:
     """Test replace environment."""
-    # we're putting the path to python explicitly in the command as dotenv -r
-    # removes all environment variables, including the PATH
-    if os.name == "nt":
-        PYTHON = "venv/Scripts/python"
-    else:
-        PYTHON = "venv/bin/python"
-    proc = run(["dotenv", "-r", PYTHON, "-m", "tests.env"], stdout=PIPE)
-    # the above .env file has exactly 4 lines, on some platforms, python itself
-    # adds a few more environment variables
+    proc = run(["dotenv", "-r", "env"], stdout=PIPE)
+    # the above .env file has exactly 4 lines, on some test platforms, the CI
+    # environment itself adds a few more environment variables into the shell,
+    # see:
+    # https://stackoverflow.com/questions/78226424/custom-environment-variables-with-popen-on-windows-on-github-actions
     assert len(proc.stdout.splitlines()) < 10
 
-    proc = run(["dotenv", "--replace", PYTHON, "-m", "tests.env"], stdout=PIPE)
+    proc = run(["dotenv", "--replace", "env"], stdout=PIPE)
     assert len(proc.stdout.splitlines()) < 10
