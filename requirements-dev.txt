@@ -1,4 +1,4 @@
-twine==4.0.2
+twine==5.0.0
 build==1.0.3
 pytest==8.0.0
 pytest-cov==4.1.0
