@@ -7,6 +7,8 @@ from typing import Iterator
 
 import pytest
 
+from dotenv_cli import __VERSION__
+
 DOTENV_FILE = """
 # comment=foo
 TEST=foo
@@ -24,6 +26,12 @@ def dotenvfile() -> Iterator[Path]:
         fh.write(DOTENV_FILE)
     yield _file
     _file.unlink()
+
+
+def test_this_dotenv() -> None:
+    """Simple test for CI to assert we're running *our* dotenv."""
+    proc = run(["dotenv", "--version"], stdout=PIPE)
+    assert __VERSION__.encode() in proc.stdout
 
 
 def test_stdout(dotenvfile: Path) -> None:
@@ -70,3 +78,16 @@ def test_no_command() -> None:
     """Test no command."""
     proc = run(["dotenv"])
     assert proc.returncode == 0
+
+
+def test_replace_environment(dotenvfile: Path) -> None:
+    """Test replace environment."""
+    proc = run(["dotenv", "-r", "env"], stdout=PIPE)
+    # the above .env file has exactly 4 lines, on some test platforms, the CI
+    # environment itself adds a few more environment variables into the shell,
+    # see:
+    # https://stackoverflow.com/questions/78226424/custom-environment-variables-with-popen-on-windows-on-github-actions
+    assert len(proc.stdout.splitlines()) < 10
+
+    proc = run(["dotenv", "--replace", "env"], stdout=PIPE)
+    assert len(proc.stdout.splitlines()) < 10

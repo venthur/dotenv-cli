@@ -172,3 +172,9 @@ def test_export() -> None:
 
     env = core.read_dotenv(f.name)
     assert env["FOO"] == "BAR"
+
+
+def test_non_existing_dotenv() -> None:
+    """Non-existing dotenv file."""
+    env = core.read_dotenv("/tmp/i.dont.exist")
+    assert len(env) == 0
