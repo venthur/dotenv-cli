@@ -29,21 +29,21 @@ def parse_args(args: list[str] | None = None) -> argparse.Namespace:
     """
     parser = argparse.ArgumentParser(
         description=(
-            "dotenv reads the `.env` file from the current directory, puts "
-            "the contents in the environment, and executes the given command."
+            "dotenv executes a given command with environment variables "
+            "loaded from a .env file."
         ),
     )
 
     parser.add_argument(
         "-e",
         "--dotenv",
-        help="Alternative .env file",
+        help="alternative .env file",
         default=".env",
     )
 
     parser.add_argument(
         "command",
-        help="Shell command to execute",
+        help="shell command to execute",
         nargs=argparse.REMAINDER,
     )
 
@@ -58,9 +58,9 @@ def parse_args(args: list[str] | None = None) -> argparse.Namespace:
         "--replace",
         action="store_true",
         help=(
-            "Replace existing environment variables. "
-            "The default behaviour is to add new- or update existing ones."
-        ),
+            "completely replace all existing environment variables with the "
+            "ones loaded from the .env file"
+            )
     )
 
     return parser.parse_args(args)
