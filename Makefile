@@ -3,6 +3,9 @@ PY = python3
 VENV = venv
 BIN=$(VENV)/bin
 
+DOCS_SRC = docs
+DOCS_OUT = site
+
 ifeq ($(OS), Windows_NT)
 	BIN=$(VENV)/Scripts
 	PY=python
@@ -10,7 +13,7 @@ endif
 
 
 .PHONY: all
-all: lint mypy test test-release
+all: lint mypy test test-docs test-release
 
 $(VENV): requirements-dev.txt pyproject.toml
 	$(PY) -m venv $(VENV)
@@ -46,6 +49,15 @@ test-release: $(VENV) build
 release: $(VENV) build
 	$(BIN)/twine upload dist/*
 
+.PHONY: test-docs
+test-docs: $(VENV)
+	# we try to keep the README and the docs/index.md in sync
+	@cmp README.md docs/index.md
+
+.PHONY: docs
+docs: $(VENV)
+	$(BIN)/mkdocs build
+
 VERSION = $(shell python3 -c 'from dotenv_cli import __VERSION__; print(__VERSION__)')
 tarball:
 	git archive --output=../dotenv-cli_$(VERSION).orig.tar.gz HEAD
@@ -54,6 +66,7 @@ tarball:
 clean:
 	rm -rf build dist *.egg-info
 	rm -rf $(VENV)
+	rm -rf $(DOCS_OUT)
 	find . -type f -name *.pyc -delete
 	find . -type d -name __pycache__ -delete
 	# coverage

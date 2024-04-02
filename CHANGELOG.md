@@ -4,6 +4,7 @@
 
 * added option to completely replace environment with contents of the dotenv
   file
+* added very simple docs for readthedocs
 
 ## [3.2.2] -- 2023-11-10
 

@@ -1,0 +1,7 @@
+site_name: dotenv-cli
+site_url: https://dotenv-cli.readthedocs.io/
+repo_url: https://github.com/venthur/dotenv-cli
+repo_name: venthur/dotenv-cli
+
+theme:
+  name: material
