@@ -24,6 +24,7 @@ classifiers = [
 dotenv = "dotenv_cli.cli:main"
 
 [project.urls]
+'Documentation' = 'https://dotenv-cli.readthedocs.io/'
 'Source' = 'https://github.com/venthur/dotenv-cli'
 'Changelog' = 'https://github.com/venthur/dotenv-cli/blob/master/CHANGELOG.md'
 
