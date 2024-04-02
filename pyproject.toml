@@ -30,12 +30,14 @@ dotenv = "dotenv_cli.cli:main"
 
 [project.optional-dependencies]
 dev = [
+    "build",
+    "mkdocs",
+    "mkdocs-material",
+    "mypy",
     "pytest",
     "pytest-cov",
     "ruff",
-    "build",
     "twine",
-    "mypy"
 ]
 
 [tool.setuptools.dynamic]
