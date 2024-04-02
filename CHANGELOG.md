@@ -1,5 +1,9 @@
 # Changelog
 
+## [unreleased]
+
+* added very simple docs for readthedocs
+
 ## [3.2.2] -- 2023-11-10
 
 * replaced flake8 with ruff
