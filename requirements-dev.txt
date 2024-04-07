@@ -2,7 +2,7 @@ build==1.1.1
 mkdocs-material==9.5.17
 mkdocs==1.5.3
 mypy==1.9.0
-pytest-cov==4.1.0
+pytest-cov==5.0.0
 pytest==8.1.1
 ruff==0.3.4
 twine==5.0.0
