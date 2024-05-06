@@ -1,5 +1,5 @@
 build==1.1.1
-mkdocs-material==9.5.17
+mkdocs-material==9.5.21
 mkdocs==1.5.3
 mypy==1.9.0
 pytest-cov==4.1.0
