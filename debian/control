@@ -1,5 +1,5 @@
 Source: dotenv-cli
-Section: python
+Section: devel
 Priority: optional
 Maintainer: Bastian Venthur <venthur@debian.org>
 Build-Depends:
