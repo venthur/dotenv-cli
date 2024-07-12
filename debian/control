@@ -17,10 +17,12 @@ Vcs-Browser: https://github.com/venthur/dotenv-cli
 Vcs-Git: https://github.com/venthur/dotenv-cli.git
 Testsuite: autopkgtest-pkg-python
 
-Package: python3-dotenv-cli
+Package: dotenv-cli
 Architecture: all
 Depends: ${python3:Depends}, ${misc:Depends}
 Conflicts: ruby-dotenv
+Replaces: python3-dotenv-cli (<< 3.3.0-2)
+Breaks: python3-dotenv-cli (<< 3.3.0-2)
 Description: CLI that loads .env configuration
  This package provides the dotenv command. It reads the .env file from the
  current directory puts the contents in the environment and executes the given
@@ -28,3 +30,18 @@ Description: CLI that loads .env configuration
  .
  dotenv supports alternative .env files like .env.development via the -e or
  --dotenv parameters.
+
+Package: python3-dotenv-cli
+Architecture: all
+Depends: dotenv-cli, ${misc:Depends}
+Conflicts: ruby-dotenv
+Section: oldlibs
+Description: transitional package
+ This package provides the dotenv command. It reads the .env file from the
+ current directory puts the contents in the environment and executes the given
+ command.
+ .
+ dotenv supports alternative .env files like .env.development via the -e or
+ --dotenv parameters.
+ .
+ This is a transitional package It can be safely removed.

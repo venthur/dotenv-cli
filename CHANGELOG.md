@@ -1,5 +1,9 @@
 # Changelog
 
+## [unreleased]
+
+* renamed debian package to dotenv-cli
+
 ## [3.3.0] -- 2024-04-07
 
 * added option to completely replace environment with contents of the dotenv
