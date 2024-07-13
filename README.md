@@ -35,7 +35,7 @@ $ pip install dotenv-cli
 Alternatively, you can install dotenv-cli on Debian based distributions via:
 
 ```bash
-# apt-get install python3-dotenv-cli
+# apt-get install dotenv-cli
 ```
 
 
