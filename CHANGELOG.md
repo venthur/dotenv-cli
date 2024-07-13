@@ -1,6 +1,6 @@
 # Changelog
 
-## [unreleased]
+## [3.3.1] -- 2024-07-13
 
 * renamed debian package to dotenv-cli
 * changed section to devel

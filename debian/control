@@ -21,8 +21,8 @@ Package: dotenv-cli
 Architecture: all
 Depends: ${python3:Depends}, ${misc:Depends}
 Conflicts: ruby-dotenv
-Replaces: python3-dotenv-cli (<< 3.3.0-2)
-Breaks: python3-dotenv-cli (<< 3.3.0-2)
+Replaces: python3-dotenv-cli (<< 3.3.1-1)
+Breaks: python3-dotenv-cli (<< 3.3.1-1)
 Description: CLI that loads .env configuration
  This package provides the dotenv command. It reads the .env file from the
  current directory puts the contents in the environment and executes the given
