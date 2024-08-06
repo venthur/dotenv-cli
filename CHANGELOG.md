@@ -3,6 +3,7 @@
 ## [unreleased]
 
 * support multiple .env files via `-e` or `--dotenv` parameters
+* dropped support for Python 3.8
 
 ## [3.3.1] -- 2024-07-13
 

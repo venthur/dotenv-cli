@@ -1,9 +1,9 @@
 """Test the CLI interface."""
 
 import tempfile
+from collections.abc import Iterator
 from pathlib import Path
 from subprocess import PIPE, run
-from typing import Iterator
 
 import pytest
 
