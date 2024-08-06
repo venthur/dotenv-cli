@@ -63,7 +63,8 @@ def read_dotenv(filename: str) -> dict[str, str]:
         if len(value) >= 2 and value[0] == value[-1] == '"':
             value = value[1:-1]
             # escape escape characters
-            value = bytes(value, "utf-8").decode("unicode-escape")
+            #value = bytes(value, "utf-8").decode("unicode-escape")
+            value = value.replace('\n', r'\n')
 
         elif len(value) >= 2 and value[0] == value[-1] == "'":
             value = value[1:-1]
