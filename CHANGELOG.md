@@ -1,5 +1,9 @@
 # Changelog
 
+## [unreleased]
+
+* dropped support for Python 3.8
+
 ## [3.3.1] -- 2024-07-13
 
 * renamed debian package to dotenv-cli
