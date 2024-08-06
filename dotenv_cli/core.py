@@ -74,7 +74,7 @@ def read_dotenv(filename: str) -> dict[str, str]:
 
 
 def run_dotenv(
-    filename: str, command: list[str], replace: bool = False
+    filenames: list[str], command: list[str], replace: bool = False
 ) -> NoReturn | int:
     """Run dotenv.
 
@@ -83,8 +83,8 @@ def run_dotenv(
 
     Parameters
     ----------
-    filename
-        path to the .env file
+    filenames
+        paths to the .env files
     command
         command to execute
     replace_env
@@ -97,8 +97,10 @@ def run_dotenv(
         function does not return normally.
 
     """
-    # read dotenv
-    dotenv = read_dotenv(filename)
+    # read dotenv files
+    dotenv = {}
+    for filename in filenames:
+        dotenv.update(read_dotenv(filename))
 
     if replace:
         # replace env

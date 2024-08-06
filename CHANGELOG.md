@@ -1,5 +1,9 @@
 # Changelog
 
+## [unreleased]
+
+* support multiple .env files via `-e` or `--dotenv` parameters
+
 ## [3.3.1] -- 2024-07-13
 
 * renamed debian package to dotenv-cli
