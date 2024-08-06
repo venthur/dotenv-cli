@@ -1,3 +1,11 @@
+dotenv-cli (3.4.0-1) unstable; urgency=medium
+
+  * Support multiple .env files via `-e` or `--dotenv` parameters
+  * Dropped support for Python 3.8
+  * Updated dependencies
+
+ -- Bastian Venthur <venthur@debian.org>  Tue, 06 Aug 2024 18:22:57 +0200
+
 dotenv-cli (3.3.1-1) unstable; urgency=medium
 
   * renamed package to dotenv-cli
