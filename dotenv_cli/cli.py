@@ -37,8 +37,12 @@ def parse_args(args: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "-e",
         "--dotenv",
-        help="alternative .env file",
-        default=".env",
+        help=(
+            "alternative .env file; this parameter can be provided multiple "
+            "times and the .env files will be evaluated in order"
+        ),
+        action="append",
+        default=[".env"],
     )
 
     parser.add_argument(
@@ -78,6 +82,9 @@ def main() -> NoReturn | int:
 
     """
     args = parse_args()
+    # if alternative .env file is given, remove the default one
+    if len(args.dotenv) > 1:
+        args.dotenv = args.dotenv[1:]
     if not args.command:
         return 0
 

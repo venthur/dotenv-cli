@@ -5,7 +5,8 @@ the current directory, puts the contents in the environment by either changing
 existing- or adding new environment variables, and executes the given command.
 
 `dotenv` supports alternative `.env` files like `.env.development` via the `-e`
-or `--dotenv` parameters.
+or `--dotenv` parameters. This parameter can be repeated to load multiple
+files, the .env files will be loaded in the order they are provided.
 
 With the `--replace` flag, `dotenv` also provides an option to completely
 replace the environment variables with the ones from the `.env` file, allowing

@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.4.0] -- 2024-08-06
+
+* Support multiple .env files via `-e` or `--dotenv` parameters
+* Dropped support for Python 3.8
+* Updated dependencies
+
 ## [3.3.1] -- 2024-07-13
 
 * renamed debian package to dotenv-cli

@@ -1,4 +1,4 @@
 """Version information for the dotenv-cli package."""
 
 
-__VERSION__ = "3.3.1"
+__VERSION__ = "3.4.0"

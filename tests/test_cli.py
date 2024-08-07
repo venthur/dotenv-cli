@@ -1,9 +1,9 @@
 """Test the CLI interface."""
 
 import tempfile
+from collections.abc import Iterator
 from pathlib import Path
 from subprocess import PIPE, run
-from typing import Iterator
 
 import pytest
 
@@ -65,6 +65,39 @@ def test_alternative_dotenv() -> None:
 
     proc = run(["dotenv", "--dotenv", f.name, "env"], stdout=PIPE)
     assert b"foo=bar" in proc.stdout
+
+
+def test_multiple_dotenv() -> None:
+    """Test multiple dotenv files."""
+    with tempfile.NamedTemporaryFile("w", delete=False) as f:
+        f.write("foo=foo")
+
+    with tempfile.NamedTemporaryFile("w", delete=False) as b:
+        b.write("bar=bar")
+
+    proc = run(["dotenv", "-e", f.name, "-e", b.name, "env"], stdout=PIPE)
+    assert b"foo=foo" in proc.stdout
+    assert b"bar=bar" in proc.stdout
+
+
+def test_multiple_dotenv_order() -> None:
+    """Test multiple dotenv files are processed in correct order."""
+    with tempfile.NamedTemporaryFile("w", delete=False) as f1:
+        f1.write("foo=1")
+
+    with tempfile.NamedTemporaryFile("w", delete=False) as f2:
+        f2.write("foo=2")
+
+    proc = run(["dotenv", "-e", f1.name, "-e", f2.name, "env"], stdout=PIPE)
+    assert b"foo=2" in proc.stdout
+    assert b"foo=1" not in proc.stdout
+
+    proc = run(
+        ["dotenv", "-e", f1.name, "-e", f2.name, "-e", f1.name, "env"],
+        stdout=PIPE
+    )
+    assert b"foo=1" in proc.stdout
+    assert b"foo=2" not in proc.stdout
 
 
 def test_nonexisting_dotenv() -> None:
