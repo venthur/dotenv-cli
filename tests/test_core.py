@@ -178,3 +178,20 @@ def test_non_existing_dotenv() -> None:
     """Non-existing dotenv file."""
     env = core.read_dotenv("/tmp/i.dont.exist")
     assert len(env) == 0
+
+
+def test_unicode_in_double_quoted_values() -> None:
+    """Test unicode in double quoted values."""
+    TEST = """
+    FOO=ä
+    BAR='ä'
+    BAZ="ä"
+    """
+
+    with tempfile.NamedTemporaryFile("w", delete=False) as f:
+        f.write(TEST)
+
+    env = core.read_dotenv(f.name)
+    assert env["FOO"] == "ä"
+    assert env["BAR"] == "ä"
+    assert env["BAZ"] == "ä"
