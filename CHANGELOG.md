@@ -1,5 +1,9 @@
 # Changelog
 
+## [unreleased] --
+
+* Fixed Unicode issue in double quoted values
+
 ## [3.4.0] -- 2024-08-06
 
 * Support multiple .env files via `-e` or `--dotenv` parameters
