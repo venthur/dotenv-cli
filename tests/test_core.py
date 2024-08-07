@@ -181,6 +181,7 @@ def test_non_existing_dotenv() -> None:
 
 
 def test_unicode_in_double_quoted_values() -> None:
+    """Test unicode in double quoted values."""
     TEST = """
     FOO=ä
     BAR='ä'
