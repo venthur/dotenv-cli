@@ -20,7 +20,7 @@ Testsuite: autopkgtest-pkg-python
 Package: dotenv-cli
 Architecture: all
 Depends: ${python3:Depends}, ${misc:Depends}
-Conflicts: ruby-dotenv
+Conflicts: ruby-dotenv (<< 2.4.0-2)
 Replaces: python3-dotenv-cli (<< 3.3.1-1)
 Breaks: python3-dotenv-cli (<< 3.3.1-1)
 Description: CLI that loads .env configuration
@@ -34,7 +34,7 @@ Description: CLI that loads .env configuration
 Package: python3-dotenv-cli
 Architecture: all
 Depends: dotenv-cli, ${misc:Depends}
-Conflicts: ruby-dotenv
+Conflicts: ruby-dotenv (<< 2.4.0-2)
 Section: oldlibs
 Description: transitional package
  This package provides the dotenv command. It reads the .env file from the
