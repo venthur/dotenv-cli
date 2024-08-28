@@ -1,6 +1,6 @@
 # Changelog
 
-## [unreleased] --
+## [3.4.1] -- 2024-08-28
 
 * Fixed Unicode issue in double quoted values
 

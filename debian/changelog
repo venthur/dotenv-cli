@@ -1,3 +1,12 @@
+dotenv-cli (3.4.1-1) unstable; urgency=medium
+
+  * Fixed Unicode issue in double quoted values
+  * Limit Conflicts with ruby-dotenv to pre-bookworm release as the newer
+    package doesn't provide a binary anymore (Closes: #1079832), thanks
+    Antonio Terceiro for the report and patch
+
+ -- Bastian Venthur <venthur@debian.org>  Wed, 28 Aug 2024 16:47:15 +0200
+
 dotenv-cli (3.4.0-1) unstable; urgency=medium
 
   * Support multiple .env files via `-e` or `--dotenv` parameters
