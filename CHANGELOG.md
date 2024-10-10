@@ -1,5 +1,9 @@
 # Changelog
 
+## [unreleased]
+
+* removed ruff's target-version, defaulting to pyproject's requires-python
+
 ## [3.4.1] -- 2024-08-28
 
 * Fixed Unicode issue in double quoted values

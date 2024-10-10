@@ -56,7 +56,6 @@ addopts = [
 
 [tool.ruff]
 line-length = 79
-target-version = "py39"
 
 [tool.ruff.lint]
 select = [
