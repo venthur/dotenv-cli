@@ -2,6 +2,7 @@
 
 ## [unreleased]
 
+* Added Python 3.13 to github ci
 * Updated pyproject.toml to comply with latest setuptools recommendation:
   * Removed License Classifier
   * Use license-files to point to LICENSE file
