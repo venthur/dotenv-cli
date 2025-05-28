@@ -11,5 +11,5 @@ mkdocs:
 
 python:
   install:
-    extra_requirements:
+    - extra_requirements:
       - dev
