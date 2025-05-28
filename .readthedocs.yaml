@@ -9,5 +9,6 @@ mkdocs:
   configuration: mkdocs.yml
 
 python:
-  install:
-  - requirements: requirements-dev.txt
+  pip_install: true
+  extra_requirements:
+    - dev
