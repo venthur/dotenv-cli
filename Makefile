@@ -15,10 +15,9 @@ endif
 .PHONY: all
 all: lint mypy test test-docs test-release
 
-$(VENV): requirements-dev.txt pyproject.toml
+$(VENV): pyproject.toml
 	$(PY) -m venv $(VENV)
-	$(BIN)/pip install --upgrade -r requirements-dev.txt
-	$(BIN)/pip install -e .['dev']
+	$(BIN)/pip install --upgrade -e .['dev']
 	touch $(VENV)
 
 # in this target, our tests are using Popen etc to run other scrips. Therefore

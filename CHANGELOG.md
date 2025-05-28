@@ -2,7 +2,12 @@
 
 ## [unreleased]
 
-* removed ruff's target-version, defaulting to pyproject's requires-python
+* Updated pyproject.toml to comply with latest setuptools recommendation:
+  * Removed License Classifier
+  * Use license-files to point to LICENSE file
+* Removed requirements-dev.txt, relying on pyproject.toml to specify the
+  requirements
+* Removed ruff's target-version, defaulting to pyproject's requires-python
 
 ## [3.4.1] -- 2024-08-28
 
