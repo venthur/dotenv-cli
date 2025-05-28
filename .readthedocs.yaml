@@ -1,7 +1,15 @@
+version: 2
+
 build:
-  image: latest
+  os: ubuntu-22.04
+  tools:
+    python: "3.12"
+
+mkdocs:
+  configuration: mkdocs.yml
+
 
 python:
-  pip_install: true
-  extra_requirements:
-    - dev
+  install:
+    extra_requirements:
+      - dev
