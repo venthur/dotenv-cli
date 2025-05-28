@@ -6,7 +6,6 @@ on:
 
 jobs:
   test:
-    name: Test Python ${{ matrix.python-version }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -21,12 +20,11 @@ jobs:
           - "3.10"
           - "3.11"
           - "3.12"
+          - "3.13"
 
     steps:
     - uses: actions/checkout@v4
-
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+    - uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -34,8 +32,7 @@ jobs:
         # ensure we're using *our* dotenv during testing and not some other one
         # installed on the system, e.g. gh machines apparently have sometimes
         # the ruby dotenv package installed
-        pip install --upgrade -r requirements-dev.txt
-        pip install -e .['dev']
+        pip install --upgrade -e .['dev']
         make test
 
   lint:

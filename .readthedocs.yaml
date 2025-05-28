@@ -8,6 +8,9 @@ build:
 mkdocs:
   configuration: mkdocs.yml
 
+
 python:
   install:
-  - requirements: requirements-dev.txt
+    - path: .
+      extra_requirements:
+        - dev
