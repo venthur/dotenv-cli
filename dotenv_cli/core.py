@@ -29,7 +29,7 @@ def read_dotenv(filename: str) -> dict[str, str]:
     try:
         with open(filename) as fh:
             data = fh.read()
-    except FileNotFoundError:
+    except OSError:
         logger.warning(
             f"{filename} does not exist, continuing without "
             "setting environment variables."
